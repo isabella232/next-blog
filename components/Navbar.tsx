@@ -1,6 +1,7 @@
+import { FunctionComponent } from 'react';
 import Link from 'next/link';
 
-const Navbar = () => {
+const Navbar: FunctionComponent = () => {
     return(
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">

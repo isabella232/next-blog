@@ -1,7 +1,7 @@
 import Layout from "@components/Layout"
+import config from "@config/config";
 import fetch from 'node-fetch'
 import { FunctionComponent } from 'react';
-import config from "@config/config";
 
 type HomeProps = {
   content ?: string,

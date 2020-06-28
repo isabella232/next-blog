@@ -1,7 +1,8 @@
+import { FunctionComponent } from 'react';
 import Head from 'next/head';
-import Navbar from '../components/Navbar';
+import Navbar from './Navbar';
 
-const Layout = (props) => {
+const Layout: FunctionComponent = (props) => {
     return(
         <div>
             <Head>
