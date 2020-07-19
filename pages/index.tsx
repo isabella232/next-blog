@@ -2,34 +2,49 @@ import Layout from "@components/Layout"
 import config from "@config/config";
 import fetch from 'node-fetch'
 import { FunctionComponent } from 'react';
-import Item from 'components/Receipt/Item';
+import Item from '@components/Receipt/Item/Item';
+import ReactMarkdown from 'react-markdown';
+import Link from 'next/link';
 
 type HomeProps = {
-  content ?: string,
-  cover ?: string
+  homeContent: {
+    content: string,
+},
+  recipes
 }
 
-const Home: FunctionComponent<HomeProps> = ( { homeContent, receipts } ) => {
+const Home: FunctionComponent<HomeProps> = ( { homeContent, recipes : { first, others } } ) => {
   return (
     <Layout>
       <section className="section">
         <div className="container">
-          <h1 className="title has-text-primary	">Page title</h1>
-          <div className="columns">
-            <div className="column is-three-fifths">
-              <p>{homeContent.content}</p>
-            </div>
-            <div className="column">
-              <img src={homeContent.cover} />
-            </div>
+          <h1 className="title has-text-primary	is-size-2">Page title</h1>
+          <div className="mb-6">
+              <p><ReactMarkdown source={homeContent.content} /></p>
           </div>
+
           <div>
-            <h2 className="title has-text-secondary	" >Dernières recettes</h2>
-            <div className="columns">
-              {receipts.map((receipt) => {
-                return <div className="column is-one-quarter" ><Item item={receipt} /></div>
-              })}
+            
+            <div className="is-flex">
+              <h2 className="title has-text-secondary" >Dernières recettes</h2>
+              <Link href="/recettes">
+                <a className="button is-secondary ml-3" >Voir toutes les recettes</a>
+              </Link>
             </div>
+            {first !== null && (
+              <div className="columns is-variable is-6">
+              <div className="column is-two-fifths">
+                <Item item={first} type="large" />
+              </div>
+              {others.length > 0 && (
+                <div className="column">
+                  {others.map((recipe) => {
+                    return <div className="column" ><Item item={recipe} type="small" /></div>
+                  })}
+                </div>
+              )}
+            </div>
+            )}
           </div>
         </div>
       </section>
@@ -44,19 +59,29 @@ export async function getStaticProps() {
   const reponseHome = await fetch(config.strapiUrl + '/home');
   const jsonResponseHome = (await reponseHome.json() || [] );
 
-  let coverUrl = config.strapiUrl + jsonResponseHome.cover.formats.medium.url;
-
   // last receipts request
-  const reponseReceipts = await fetch(config.strapiUrl + '/receipts?_limit=4&_sort=id:DESC');
-  const jsonResponseReceipts = (await reponseReceipts.json() || [] )
+  const reponseRecipes = await fetch(config.strapiUrl + '/recipes?_limit=4&_sort=id:DESC');
+  const jsonResponseRecipes = (await reponseRecipes.json() || [] )
+  
+  var firstReceipt = null;
+  if(jsonResponseRecipes.length > 0){
+    firstReceipt = jsonResponseRecipes[0];
+  }
 
+  var lastReceipts = [];
+  if(jsonResponseRecipes.length > 1){
+    lastReceipts = jsonResponseRecipes.slice(1);
+  }
+  
   return {
     props: { 
-        homeContent: {
+      homeContent: {
           content: jsonResponseHome.content,
-          cover: coverUrl
       },
-      receipts: jsonResponseReceipts
+      recipes: {
+        first: firstReceipt,
+        others: lastReceipts
+      }
     }
 
   }
