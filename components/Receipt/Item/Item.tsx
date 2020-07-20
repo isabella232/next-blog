@@ -24,7 +24,7 @@ const Item: FunctionComponent<ItemProps> = ( { item : { title, content, difficul
 
     const printformatDate = (created_at : string) : string => {
         let date = new Date(created_at);
-        return `${date.getDay()}/${date.getDate()}/${date.getFullYear()}`;
+        return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
     }
 
     if(type === 'large'){
