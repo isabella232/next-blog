@@ -63,12 +63,12 @@ export async function getStaticProps() {
   const reponseRecipes = await fetch(config.strapiUrl + '/recipes?_limit=4&_sort=id:DESC');
   const jsonResponseRecipes = (await reponseRecipes.json() || [] )
   
-  var firstReceipt = null;
+  let firstReceipt = null;
   if(jsonResponseRecipes.length > 0){
     firstReceipt = jsonResponseRecipes[0];
   }
 
-  var lastReceipts = [];
+  let lastReceipts = [];
   if(jsonResponseRecipes.length > 1){
     lastReceipts = jsonResponseRecipes.slice(1);
   }
