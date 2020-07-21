@@ -1,5 +1,6 @@
 import { FunctionComponent, ReactElement } from 'react';
 import config from "@config/config";
+import Link from 'next/link';
 
 type ItemProps = {
     cover,
@@ -7,7 +8,7 @@ type ItemProps = {
     content: string
 }
 
-const Medium: FunctionComponent<ItemProps> = ( {title, cover, created_at, content } ) => {
+const Medium: FunctionComponent<ItemProps> = ( {title, cover, created_at, content, link } ) => {
 
     let cardContentStyle = {
         display: 'flex',
@@ -23,7 +24,7 @@ const Medium: FunctionComponent<ItemProps> = ( {title, cover, created_at, conten
                 </figure>
             )}
             <div style={cardContentStyle} className="card-content column is-three-quarters">
-               
+
                 <div className="level">
                     <div className="level-left">
                         <h3 className="is-size-4">{title}</h3>
@@ -36,11 +37,13 @@ const Medium: FunctionComponent<ItemProps> = ( {title, cover, created_at, conten
                 <div className="content has-text-weight-light mb-2">
                     {content}
                 </div>
-                
+
                 <div className="level">
                     <div className="level-left"></div>
                     <div className="level-right">
-                        <a className="button is-primary has-text-right" href="">Lire la suite</a>
+                        <Link href={link.href} as={link.as} >
+                          <a className="button is-primary has-text-right">Lire la suite</a>
+                        </Link>
                     </div>
                 </div>
             </div>

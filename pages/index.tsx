@@ -24,7 +24,7 @@ const Home: FunctionComponent<HomeProps> = ( { homeContent, recipes : { first, o
           </div>
 
           <div>
-            
+
             <div className="is-flex">
               <h2 className="title has-text-secondary" >Dernières recettes</h2>
               <Link href="/recettes">
@@ -62,7 +62,7 @@ export async function getStaticProps() {
   // last receipts request
   const reponseRecipes = await fetch(config.strapiUrl + '/recipes?_limit=4&_sort=id:DESC');
   const jsonResponseRecipes = (await reponseRecipes.json() || [] )
-  
+
   let firstReceipt = null;
   if(jsonResponseRecipes.length > 0){
     firstReceipt = jsonResponseRecipes[0];
@@ -72,9 +72,9 @@ export async function getStaticProps() {
   if(jsonResponseRecipes.length > 1){
     lastReceipts = jsonResponseRecipes.slice(1);
   }
-  
+
   return {
-    props: { 
+    props: {
       homeContent: {
           content: jsonResponseHome.content,
       },

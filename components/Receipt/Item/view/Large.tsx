@@ -1,5 +1,6 @@
 import { FunctionComponent, ReactElement } from 'react';
 import config from "@config/config";
+import Link from 'next/link';
 
 type ItemProps = {
     title: string,
@@ -8,7 +9,7 @@ type ItemProps = {
     content: string
 }
 
-const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, content } ) => {
+const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, content, link } ) => {
 
     return(
         <div className="card has-background-white-bis">
@@ -34,7 +35,9 @@ const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, content
                 <div className="level">
                     <div className="level-left"></div>
                     <div className="level-right">
-                        <a className="button is-primary has-text-right" href="">Lire la suite</a>
+                      <Link href={link.href} as={link.as} >
+                        <a className="button is-primary has-text-right" >Lire la suite</a>
+                      </Link>
                     </div>
                 </div>
             </div>

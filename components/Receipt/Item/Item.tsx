@@ -16,8 +16,8 @@ type ItemProps = {
     type: string
   }
 
-const Item: FunctionComponent<ItemProps> = ( { item : { title, content, difficulty, cover, created_at }, type} ) => {
-    
+const Item: FunctionComponent<ItemProps> = ( { item : { title, content, difficulty, cover, created_at, slug }, type} ) => {
+
     const printContentResume = (content :string, letters :number) : string => {
         return content.substr(0, letters) + '...';
     }
@@ -29,31 +29,44 @@ const Item: FunctionComponent<ItemProps> = ( { item : { title, content, difficul
 
     if(type === 'large'){
         return(
-            <Large 
-                title={title} 
-                cover={cover} 
-                created_at={printformatDate(created_at)} 
-                content={<ReactMarkdown 
-                    source={printContentResume(content, 200)} 
-            />} />
+            <Large
+                title={title}
+                cover={cover}
+                created_at={printformatDate(created_at)}
+                link={{
+                  href: "/recettes/[slug]",
+                  as: `/recettes/${slug}`
+                }}
+                content={<ReactMarkdown
+                    source={printContentResume(content, 200)}/>}
+              />
         );
     } else if(type === "small") {
+        console.log(slug);
         return(
-            <Small 
-                title={title} 
-                cover={cover} 
-                created_at={printformatDate(created_at)} 
-                content={<ReactMarkdown source={printContentResume(content, 100)} 
-            />} />
+            <Small
+                title={title}
+                cover={cover}
+                link={{
+                  href: "/recettes/[slug]",
+                  as: `/recettes/${slug}`
+                }}
+                created_at={printformatDate(created_at)}
+                content={<ReactMarkdown source={printContentResume(content, 100)} />}
+            />
         );
     } else {
         return(
-            <Medium 
-                title={title} 
-                cover={cover} 
-                created_at={printformatDate(created_at)} 
-                content={<ReactMarkdown source={printContentResume(content, 250)} 
-            />} />
+            <Medium
+                title={title}
+                cover={cover}
+                created_at={printformatDate(created_at)}
+                link={{
+                  href: "/recettes/[slug]",
+                  as: `/recettes/${slug}`
+                }}
+                content={<ReactMarkdown source={printContentResume(content, 250)}/>}
+            />
         );
     }
 }
