@@ -1,0 +1,16 @@
+body {
+  font-family: 'Roboto';
+  color: rgb(74, 74, 74);
+  line-height: 1.5;
+  margin: 0;
+}
+
+p {
+  word-break: break-all;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
+
+h1, h2 {
+  font-family: 'Sniglet';
+}
