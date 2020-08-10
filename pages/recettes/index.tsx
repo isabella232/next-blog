@@ -1,9 +1,12 @@
-import Layout from "@components/Layout"
 import config from "@config/config";
 import fetch from 'node-fetch'
 import { FunctionComponent } from 'react';
-import Item from '@components/Receipt/Item/Item';
 import { useRouter } from 'next/router';
+import Title from '@components/Title';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import Container from '@components/Container';
+import Recipes from "@components/List/Recipes";
 
 type IndexProps = {
   recipes: object,
@@ -16,26 +19,23 @@ const Index: FunctionComponent<IndexProps> = ( { recipes, page, lastPage } ) => 
   const router = useRouter();
 
   return (
-    <Layout>
-      <section className="section">
-        <div className="container">
-          <h1 className="title has-text-primary	is-size-2">Recettes</h1>
-          {recipes.length > 0 && (
-            recipes.map((receipt) => {
-              return <Item item={receipt} type="medium" />
-            })
-          )}
-          <button className="button is-secondary mr-2" 
-            onClick={() => router.push(`/recettes?page=${page - 1}`)}
-            disabled={page <= 1 }
-            > Précedent</button>
-          <button className="button is-secondary" 
-            onClick={() => router.push(`/recettes?page=${page + 1}`)}
-            disabled={page >= lastPage}
-            > Suivant</button>
-        </div>
-      </section>
-    </Layout>
+    <Container mt={5}>
+      <Title size={1} color="primary.main">Recettes</Title>
+      <Recipes recipes={recipes} mt={2} />
+      <Box display="flex" justifyContent="center">
+        <Button
+          style={{marginRight: "5px"}}
+          variant="outlined"
+          onClick={() => router.push(`/recettes?page=${page - 1}`)}
+          disabled={page <= 1 }
+          > Précedent</Button>
+        <Button
+          variant="outlined"
+          onClick={() => router.push(`/recettes?page=${page + 1}`)}
+          disabled={page >= lastPage}
+          > Suivant</Button>
+      </Box>
+    </Container>
   )
 }
 

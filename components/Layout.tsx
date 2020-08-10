@@ -3,15 +3,16 @@ import Head from 'next/head';
 import Navbar from './Navbar';
 
 const Layout: FunctionComponent = (props) => {
+
+
     return(
         <div>
             <Head>
                 <title>web app</title>
-                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
-                <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
             </Head>
             <Navbar />
-            <div className="container">
+            <div>
                 {props.children}
             </div>
         </div>
@@ -19,3 +20,5 @@ const Layout: FunctionComponent = (props) => {
 }
 
 export default Layout;
+
+// <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css" />
