@@ -1,19 +1,19 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+/web/node_modules
 /.pnp
-.pnp.js
+/web/.pnp.js
 
 # testing
-/coverage
+/web/coverage
 
 # next.js
-/.next/
-/out/
+/web/.next/
+/web/out/
 
 # production
-/build
+/web/build
 
 # misc
 .DS_Store
@@ -29,4 +29,122 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-/config/config.json
+/web/config/config.json
+
+
+#Strapi
+
+############################
+# OS X
+############################
+
+api/.DS_Store
+api/.AppleDouble
+api/.LSOverride
+api/Icon
+api/.Spotlight-V100
+api/.Trashes
+api/._*
+
+
+############################
+# Linux
+############################
+
+api/*~
+
+
+############################
+# Windows
+############################
+
+api/Thumbs.db
+api/ehthumbs.db
+api/Desktop.ini
+api/$RECYCLE.BIN/
+api/*.cab
+api/*.msi
+api/*.msm
+api/*.msp
+
+
+############################
+# Packages
+############################
+
+*.7z
+*.csv
+*.dat
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.seed
+*.so
+*.swo
+*.swp
+*.swn
+*.swm
+*.out
+*.pid
+
+
+############################
+# Logs and databases
+############################
+
+api/.tmp
+api/*.log
+api/*.sql
+api/*.sqlite
+api/*.sqlite3
+
+
+############################
+# Misc.
+############################
+
+*#
+ssl
+.idea
+nbproject
+public/uploads/*
+!public/uploads/.gitkeep
+
+############################
+# Node.js
+############################
+
+lib-cov
+lcov.info
+pids
+logs
+results
+api/node_modules
+api/.node_history
+
+
+############################
+# Tests
+############################
+
+testApp
+coverage
+
+############################
+# Strapi
+############################
+
+api/.env
+api/license.txt
+api/exports
+api/.cache
+api/build

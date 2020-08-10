@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_recipes_ingredients",
+  "info": {
+    "name": "ingredient",
+    "icon": "fish"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal"
+    },
+    "ingredient": {
+      "model": "ingredient"
+    },
+    "unit": {
+      "model": "unit"
+    }
+  }
+}

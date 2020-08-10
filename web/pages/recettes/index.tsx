@@ -1,4 +1,4 @@
-import config from "@config/config";
+import config from "@components/Recipe/Item/view/node_modules/@config/config";
 import fetch from 'node-fetch'
 import { FunctionComponent } from 'react';
 import { useRouter } from 'next/router';

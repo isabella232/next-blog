@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "name": "recipes"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "difficulty": {
+      "type": "enumeration",
+      "enum": [
+        "facile",
+        "moyen",
+        "difficile"
+      ]
+    },
+    "cover": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "slug": {
+      "type": "string"
+    },
+    "ingredient": {
+      "type": "component",
+      "repeatable": true,
+      "component": "recipes.ingredient"
+    },
+    "steps": {
+      "type": "dynamiczone",
+      "components": [
+        "step.step",
+        "step.title"
+      ]
+    },
+    "utensils": {
+      "collection": "utensil"
+    },
+    "person": {
+      "type": "integer"
+    }
+  }
+}

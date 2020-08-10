@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_step_titles",
+  "info": {
+    "name": "title",
+    "icon": "greater-than"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}
