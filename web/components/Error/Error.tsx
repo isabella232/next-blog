@@ -1,6 +1,7 @@
 import Layout from "@components/Layout"
+import { FunctionComponent } from 'react';
 
-const Error = ({ status }) => {
+const Error = ({ status : number }) : JSX.Element => {
   return(
     <Layout>
       <h1>{status}</h1>
