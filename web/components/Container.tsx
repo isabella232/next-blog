@@ -8,10 +8,12 @@ type ContainerProps = {
     bgcolor?: string,
     height?: number,
     type?: string
-    mt?: number
+    mt?: number,
+    display?: string,
+    justifyContent?: string
 }
 
-const Container :FunctionComponent<ContainerProps> = (props) => {
+const Container : FunctionComponent<ContainerProps> = (props) => {
 
     const getMaxWidth = (theme) : string => {
         const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
@@ -23,7 +25,6 @@ const Container :FunctionComponent<ContainerProps> = (props) => {
 
         return `${theme.breakpoints.values.lg}px`;
     }
-
 
     const theme = useTheme();
 

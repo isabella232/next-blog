@@ -1,28 +1,32 @@
+import React, { useState } from 'react';
+import { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box';
-
 import IconButton from '@material-ui/core/IconButton';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 import { Item as Ustensil } from "@components/Recipe/Ustensil/Item";
 
-import React, { useState } from 'react';
+type CarouselProps = {
+    items, 
+    limit: number,
+}
 
-const Carousel = (props) => {
+const Carousel :FunctionComponent<CarouselProps>  = (props) => {
 
     const { items, limit } = props;
 
     const [visibleImageIndex, setVisibleImageIndex]  = useState([0, limit]);
     const [visibleImage, setVisibleImage] = useState(items.slice(0, limit));
 
-    const canMoveBefore: boolean = () => {
+    const canMoveBefore = () : boolean => {
         return !(visibleImageIndex[0] === 0);
     }
  
-    const canMoveAfter: boolean = () => {
+    const canMoveAfter = () : boolean => {
         return !(visibleImageIndex[0] >= (items.length - limit));
     }
 
-    const moveBefore = () => {
+    const moveBefore = () : void => {
         
         if(canMoveBefore() === false) return;
 
@@ -33,7 +37,7 @@ const Carousel = (props) => {
         setVisibleImage(items.slice(startValue, endValue))
     }
 
-    const moveAfter = () => {
+    const moveAfter = () : void => {
         if(canMoveAfter() === false) return;
 
         let startValue = visibleImageIndex[0] + 1;

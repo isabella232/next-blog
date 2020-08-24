@@ -5,12 +5,11 @@ import Box from '@material-ui/core/Box';
 type TitleProps = {
     size?: number,
     color?: string,
-    homeTitle?: string,
-    mb?: number
+    mb?: number,
 }
 
 const Title: FunctionComponent<TitleProps> = (props) => {
-    const { size, homeTitle, ...otherProps } =  props;
+    const { size, ...otherProps } =  props;
     let title = {
         fontWeight: 100,
         lineHeight: 1.125,
@@ -20,12 +19,6 @@ const Title: FunctionComponent<TitleProps> = (props) => {
         title = { ...title, fontSize: "3rem"}
     }
 
-    if(homeTitle === true){
-        title = { 
-            ...title, 
-            fontSize: "3rem"
-        }
-    }
     
     const useStyles = makeStyles({title});
     const classes = useStyles();

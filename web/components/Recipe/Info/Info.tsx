@@ -1,7 +1,13 @@
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
+import { FunctionComponent } from 'react';
 
-const Info = ({title, content}) => {
+type InfoProps = {
+    title: string,
+    content: string
+}
+
+const Info :FunctionComponent<InfoProps> = ({title, content}) => {
 
     let styles = {
         title: {

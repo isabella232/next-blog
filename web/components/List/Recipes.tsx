@@ -1,10 +1,9 @@
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
-
 import Box from '@material-ui/core/Box';
 import Item from '@components/Recipe/Item/Item';
 
-const Recipes = (props) => {
+const Recipes = (props) : JSX.Element => {
     const theme = useTheme();
     const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
     const isMediumScreen = (!useMediaQuery(theme.breakpoints.up('md')));
