@@ -1,4 +1,4 @@
-import config from "@components/Recipe/Item/view/node_modules/@config/config";
+import config from "@config/config";
 import Error from '@components/Error/Error';
 import Container from '@components/Container';
 import Box from '@material-ui/core/Box';
