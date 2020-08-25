@@ -54,6 +54,12 @@
     },
     "person": {
       "type": "integer"
+    },
+    "prep_time": {
+      "type": "integer"
+    },
+    "cook_time": {
+      "type": "integer"
     }
   }
 }

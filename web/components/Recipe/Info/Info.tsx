@@ -4,10 +4,12 @@ import { FunctionComponent } from 'react';
 
 type InfoProps = {
     title: string,
-    content: string
+    content: string,
+    mr?: number
 }
 
-const Info :FunctionComponent<InfoProps> = ({title, content}) => {
+const Info :FunctionComponent<InfoProps> = (props) => {
+    let { title, content, ...otherProps } = props;
 
     let styles = {
         title: {
@@ -26,7 +28,7 @@ const Info :FunctionComponent<InfoProps> = ({title, content}) => {
     const contentCapitalized = content.charAt(0).toUpperCase() + content.slice(1)
 
     return(
-        <Box display="flex" flexDirection="column">
+        <Box display="flex" flexDirection="column" {...otherProps} >
             <span className={classes.title} >{title}</span>
             <span className={classes.content} >{contentCapitalized}</span>
         </Box>

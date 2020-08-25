@@ -8,7 +8,7 @@ import Info from '@components/Recipe/Info/Info';
 import Ingredients from '@components/Recipe/Ingredients/Ingredients';
 import { Item as Ustensil } from "@components/Recipe/Ustensil/Item";
 import Carousel from '@components/Recipe/Ustensil/Carousel';
-
+import {  getTotalCookTime, getTime } from 'app/helper';
 import { FunctionComponent } from 'react';
 
 type RecipeProps = {
@@ -16,7 +16,7 @@ type RecipeProps = {
 }
 
 const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
-
+  console.log(recipe);
   if (recipe === null) return <Error status={404} />;
 
   const renderUstensil = (items : Array<object>, limit : number) : JSX.Element => {
@@ -43,8 +43,11 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
 
         <Box display="flex" flexDirection="column" justifyContent="flex-end" mb={2}  >
           <Title size={1} m={0} color="white">{recipe.title}</Title>
-          <Box mt={5}>
-            <Info title="Difficulté" content={recipe.difficulty} />
+          <Box mt={5} display="flex">
+            <Info title="Difficulté" content={recipe.difficulty} mr={4} />
+            <Info title="Temps total" content={getTotalCookTime(recipe.prep_time, recipe.cook_time)} mr={4} />
+            <Info title="Temps de cuisson" content={getTime(recipe.cook_time)} mr={4} />
+            <Info title="Temps de préparation" content={getTime(recipe.prep_time)} mr={4} />
           </Box>
         </Box>
 
@@ -56,6 +59,9 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
           <Title size={2} mt={3} >Ustensiles</Title>
           <Box display="flex">
             {renderUstensil(recipe.utensils, 4)}
+          </Box>
+          <Box>
+            <Title size={2} mt={4} >Etapes</Title>
           </Box>
         </Box>
         <Box width={380} mt={-30} >
