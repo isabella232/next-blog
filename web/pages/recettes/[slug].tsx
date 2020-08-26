@@ -10,13 +10,14 @@ import { Item as Ustensil } from "@components/Recipe/Ustensil/Item";
 import Carousel from '@components/Recipe/Ustensil/Carousel';
 import {  getTotalCookTime, getTime } from 'app/helper';
 import { FunctionComponent } from 'react';
+import { List as StepsList } from '@components/Recipe/Step/List';
 
 type RecipeProps = {
   recipe,
 }
 
 const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
-  console.log(recipe);
+
   if (recipe === null) return <Error status={404} />;
 
   const renderUstensil = (items : Array<object>, limit : number) : JSX.Element => {
@@ -62,6 +63,7 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
           </Box>
           <Box>
             <Title size={2} mt={4} >Etapes</Title>
+            <StepsList steps={recipe.steps} />
           </Box>
         </Box>
         <Box width={380} mt={-30} >
