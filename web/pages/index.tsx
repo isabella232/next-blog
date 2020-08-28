@@ -25,7 +25,7 @@ const Home: FunctionComponent<HomeProps> = ( { homeContent, recipes } ) => {
   
   return (
     <>
-      <Container type="full" bgcolor="primary.main">
+      <Container type="full" bgcolor="primary.main" >
         <Container mb={6} display="flex" justifyContent="space-between">
             <Box display="flex" flexDirection="column" justifyContent="center" mx={1}>
               <Title size={1} homeTitle={isSmallScreen === false ? true : false}>Lorem Impsum ma antedus el yoo</Title>

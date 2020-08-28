@@ -16,7 +16,15 @@ const Title: FunctionComponent<TitleProps> = (props) => {
     };
 
     if(size === 1){
-        title = { ...title, fontSize: "3rem"}
+        title = { ...title, fontSize: "3.5rem"}
+    }
+
+    if(size === 2){
+        title = { ...title, fontSize: "1.8rem"}
+    }
+
+    if(size === 3){
+        title = { ...title, fontSize: "1.5rem"}
     }
 
     

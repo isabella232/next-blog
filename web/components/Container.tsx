@@ -37,7 +37,7 @@ const Container : FunctionComponent<ContainerProps> = (props) => {
             width: 'auto'
         },
         containerFull: {
-            height: '280px',
+            height: '280px', // TODO auto sur mobile
         }
     };
 

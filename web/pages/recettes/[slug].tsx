@@ -23,11 +23,11 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
   const renderUstensil = (items : Array<object>, limit : number) : JSX.Element => {
     if (items.length <= limit) {
       return(
-        <>
-        {items.map( (item) => {
-          return <Ustensil item={item} />
-        })}
-        </>
+        <Box display="flex">
+          {items.map( (item) => {
+            return <Box mr={3}><Ustensil item={item} /></Box>
+          })}
+        </Box>
       );
     }
 
@@ -42,7 +42,7 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
 
       <Container display="flex" justifyContent="space-between" height={280}>
 
-        <Box display="flex" flexDirection="column" justifyContent="flex-end" mb={2}  >
+        <Box display="flex" flexDirection="column" justifyContent="flex-end" mb={2} ml={2}  >
           <Title size={1} m={0} color="white">{recipe.title}</Title>
           <Box mt={5} display="flex">
             <Info title="Difficulté" content={recipe.difficulty} mr={4} />
@@ -55,18 +55,22 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
       </Container>
 
       <Container display="flex">
-        <Box mr={5} width="100%">
-          <p>{recipe.description}</p>
+
+        <Box mr={5} ml={2} width="100%">
+          <Box mb={5} >
+            <p>{recipe.description}</p>
+          </Box>
           <Title size={2} mt={3} >Ustensiles</Title>
-          <Box display="flex">
+          <Box display="flex" mb={6}>
             {renderUstensil(recipe.utensils, 4)}
           </Box>
           <Box mb={5}>
-            <Title size={2} mt={4} mb={4} >Etapes</Title>
+            <Title size={2} mt={4} mb={0}>Etapes</Title>
             <StepsList steps={recipe.steps} />
           </Box>
         </Box>
-        <Box width={380} mt={-30} >
+
+        <Box width={380} mt={-30} mr={1} ml={1}>
           <Image width="380px" height="380px" src={config.strapiUrl + recipe.cover.formats.small.url} alt={`${recipe.title} photo`} />
           <Box bgcolor="grey.200" p={2} mt={1}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -80,6 +84,7 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
             </Box>
           </Box>
         </Box>
+
       </Container>
 
     </Container>
