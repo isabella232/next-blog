@@ -61,8 +61,8 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
           <Box display="flex">
             {renderUstensil(recipe.utensils, 4)}
           </Box>
-          <Box>
-            <Title size={2} mt={4} >Etapes</Title>
+          <Box mb={5}>
+            <Title size={2} mt={4} mb={4} >Etapes</Title>
             <StepsList steps={recipe.steps} />
           </Box>
         </Box>
@@ -70,7 +70,7 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
           <Image width="380px" height="380px" src={config.strapiUrl + recipe.cover.formats.small.url} alt={`${recipe.title} photo`} />
           <Box bgcolor="grey.200" p={2} mt={1}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
-              <Title size={2} m={0}>Ingredient</Title>
+              <Title size={2} m={0}>Ingredients</Title>
               <span>{recipe.person} personnes</span>
             </Box>
             <Box mt={3}>

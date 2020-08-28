@@ -19,16 +19,19 @@ const Step : FunctionComponent<StepProps> = ({step, number}) => {
                 borderRadius="50%" 
                 bgcolor="secondary.main" 
                 color="white"
-                width="25px" 
-                height="25px" 
+                minWidth="30px" 
+                maxHeight="30px" 
                 display="flex" 
                 justifyContent="center" 
-                alignItems="center" 
+                alignItems="center"
+                fontWeight="bold"
+                fontSize="20px"
+                fontFamily="Sniglet"
                 mr={1}
             >
                 {number}
             </Box>
-            <p>{step.content}</p>
+            <p >{step.content}</p>
         </Box>
     )
 }

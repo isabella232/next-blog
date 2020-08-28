@@ -7,7 +7,7 @@ type ListProps = {
 }
 
 export const List : FunctionComponent<ListProps> = ({steps}) => {
-    console.log(steps)
+    
     let countStep = 0;
     return(
         <>
@@ -18,7 +18,7 @@ export const List : FunctionComponent<ListProps> = ({steps}) => {
             }
             if(step.__component === "step.title") {
                 countStep = 0;
-                return <Title size={3}>{step.content}</Title>;
+                return <Title size={3} fontSize="1.3rem" mb={0}  >{step.content}</Title>;
             }
         })}
         </>
