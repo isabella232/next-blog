@@ -26,26 +26,46 @@ const Container : FunctionComponent<ContainerProps> = (props) => {
         return `${theme.breakpoints.values.lg}px`;
     }
 
-    const theme = useTheme();
+    const getStyles = () => {
 
-    let styles = {
-        container: {
-            maxWidth : getMaxWidth(theme),
-            flexGrow: 1,
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            width: 'auto'
-        },
-        containerFull: {
-            height: '280px', // TODO auto sur mobile
-        }
-    };
+        const theme = useTheme();
+    
+        let styles = {
+            container: {
+                maxWidth : getMaxWidth(theme),
+                flexGrow: 1,
+                marginLeft: 'auto',
+                marginRight: 'auto',
+                width: 'auto'
+            },
+            containerFull: {
+                height: '280px'
+            },
+            containerFullAuto: {
+                height: 'auto'
+            }
+        };
 
-    const useStyles = makeStyles(styles);
-    const classes = useStyles();
+        return styles;
+    }
+
+    const getClassName = (type : string) : string => {
+
+        const useStyles = makeStyles(getStyles());
+        const classes = useStyles();
+        switch(type) {
+            case 'full':
+              return  classes.containerFull;
+            case 'fullAuto':
+                return  classes.containerFullAuto;
+            default:
+              return classes.container;
+          }
+
+    }
     
     return(
-        <Box className={props.type === "full" ? classes.containerFull : classes.container} {...props}>
+        <Box className={getClassName(props.type)} {...props}>
             {props.children}
         </Box>
     );

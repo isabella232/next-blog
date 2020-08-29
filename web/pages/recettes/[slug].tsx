@@ -71,7 +71,10 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
         </Box>
 
         <Box width={380} mt={-30} mr={1} ml={1}>
-          <Image width="380px" height="380px" src={config.strapiUrl + recipe.cover.formats.small.url} alt={`${recipe.title} photo`} />
+          <Image width="380px" height="380px" 
+            src={config.strapiUrl + recipe.cover.formats.small.url} 
+            alt={`${recipe.title} photo`} 
+          />
           <Box bgcolor="grey.200" p={2} mt={1}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
               <Title size={2} m={0}>Ingredients</Title>

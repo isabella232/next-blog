@@ -22,13 +22,14 @@ const Home: FunctionComponent<HomeProps> = ( { homeContent, recipes } ) => {
 
   const theme = useTheme();
   const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
-  
+  const isMediumScreen = (!useMediaQuery(theme.breakpoints.up('md')));
+
   return (
     <>
-      <Container type="full" bgcolor="primary.main" >
+      <Container type={isMediumScreen === true ? 'fullAuto': 'full'} bgcolor="primary.main" >
         <Container mb={6} display="flex" justifyContent="space-between">
             <Box display="flex" flexDirection="column" justifyContent="center" mx={1}>
-              <Title size={1} homeTitle={isSmallScreen === false ? true : false}>Lorem Impsum ma antedus el yoo</Title>
+              <Title size={1}>Lorem Impsum ma antedus el yoo</Title>
               <p style={{fontSize: "20px"}} ><ReactMarkdown source={homeContent.content} /></p>
             </Box>
             <Box display={isSmallScreen === true ? 'none': ''} mx={3} m={-2}>
