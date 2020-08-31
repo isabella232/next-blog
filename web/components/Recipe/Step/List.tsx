@@ -8,7 +8,7 @@ type ListProps = {
 }
 
 export const List : FunctionComponent<ListProps> = ({steps}) => {
-    console.log(steps)
+    
     let countStep = 0;
     return(
         <Box marginY={1}>

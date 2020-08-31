@@ -7,8 +7,32 @@ import Container from '@components/Container';
 import { List as StepsList } from '@components/Recipe/Step/List';
 import Box from '@material-ui/core/Box';
 import { getTotalCookTime, getTime } from 'app/helper';
+import Tabs from "@material-ui/core/Tabs/Tabs";
+import Tab from "@material-ui/core/Tab/Tab";
+import { useState } from 'react';
 
 const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
+
+    let infoStyle = {fontWeight: "500"};
+
+    const [ tabValue, setTabValue ] = useState(0);
+
+    const updateTab = (event, value) => {
+        setTabValue(value);
+    }
+
+    const getStep = () => {
+        return <span>step</span>
+    }
+
+    const getIngredients = () => {
+        return <span>Ingredient</span>
+    }
+
+    const getInformation = () => {
+        return <span>information</span>
+    }
+
 
     return (
         <Container >
@@ -35,37 +59,17 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
                     </Title>
                 </Box>
             </Box>
-    
-            <Box p={1} bgcolor="grey.100">
-
-              <Box mt={3}>
-                <Title size={2} m={0}>Informations</Title>
-                <Box display="flex" justifyContent="space-around" mt={2}>
-                    <Box display="flex" flexDirection="column" alignItems="center">
-                        <span>Difficulté</span><span>{recipe.difficulty}</span>
-                    </Box>
-                    <Box display="flex" flexDirection="column" alignItems="center">
-                        <span>Temps total </span><span>{getTotalCookTime(recipe.prep_time, recipe.cook_time)}</span>
-                    </Box>
+            <Box bgcolor="grey.100">
+                <Tabs value={tabValue} p={1} centered onChange={updateTab}>
+                    <Tab label="Etapes"  />
+                    <Tab label="Ingredients" />
+                    <Tab label="Informations" />
+                </Tabs>
+                <Box>
+                    {tabValue === 0 ? getStep() : ''}
+                    {tabValue === 1 ? getIngredients() : ''}
+                    {tabValue === 2 ? getInformation() : ''}
                 </Box>
-                <Box display="flex" justifyContent="space-around">
-                    <Box display="flex" flexDirection="column" alignItems="center">
-                        <span>Temps de préparation</span><span>{getTime(recipe.prep_time)}</span>
-                    </Box>
-                    <Box display="flex" flexDirection="column" alignItems="center">
-                        <span>Temps de cuisson</span><span>{getTime(recipe.cook_time)}</span>
-                    </Box>
-                </Box>
-                <Box display="flex" justifyContent="space-between" alignItems="center" mt={3}>
-                  <Title size={2} m={0}>Ingredients</Title>
-                  <span>{recipe.person} personnes</span>
-                </Box>
-                <Box mt={3}>
-                  {recipe.ingredient.map((item) => {
-                    return <Ingredients amount={item.amount} item={item.ingredient} unit={item.unit} />
-                  })}
-                </Box>
-              </Box>
             </Box>
     
         </Container>
