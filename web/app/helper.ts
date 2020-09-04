@@ -21,3 +21,15 @@ export function getTime(time : number) : string {
     return `${hours}h${minutes}min`;
 
  }
+
+/**
+ * Define the number of ustensil first display on the page, depending of the size screen
+ */
+ export function getUstensilLimit(isMediumScreen: boolean, isSmallScreen: boolean) : number
+ {
+    if(isSmallScreen === true) return 1;
+
+    if(isMediumScreen === true) return 3;
+
+    return 5;
+ }

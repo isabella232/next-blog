@@ -12,14 +12,14 @@ export const List : FunctionComponent<ListProps> = ({steps}) => {
     let countStep = 0;
     return(
         <Box marginY={1}>
-            {steps.map((step) => {
+            {steps.map((step, index) => {
                 if(step.__component === "step.step") {
                     countStep++;
-                    return <Step step={step} number={countStep} />
+                    return <Step step={step} number={countStep} key={index} />
                 }
                 if(step.__component === "step.title") {
                     countStep = 0;
-                    return <Title size={3} fontSize="1.3rem" mb={0}  >{step.content}</Title>;
+                    return <Title size={3} fontSize="1.3rem" mb={0} key={index} >{step.content}</Title>;
                 }
             })}
         </Box>

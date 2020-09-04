@@ -8,6 +8,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Desktop from 'Template/Recipe/Desktop';
 import Mobile from 'Template/Recipe/Mobile';
+import { getUstensilLimit } from 'app/helper';
 
 type RecipeProps = {
   recipe,
@@ -15,29 +16,17 @@ type RecipeProps = {
 
 const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
 
+  const theme = useTheme();
+  const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
+
   if (recipe === null) return <Error status={404} />;
-
-  /**
-   * Define the number of ustensil first display on the page, depending of the size screen
-   */
-  const getUstensilLimit = () : number => {
-    const theme = useTheme();
-    const isMediumScreen = (!useMediaQuery(theme.breakpoints.up('md')));
-    const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
-
-    if(isMediumScreen === true) return 3;
-
-    if(isSmallScreen === true) return 1;
-
-    return 5;
-  }
 
   /**
    * Return the ustensil JSX element, can be a carousel or simple list
    */
-  const renderUstensil = (items : Array<object>) : JSX.Element => {
+  const renderUstensil = (items : Array<object>, isMediumScreen: boolean, isSmallScreen : boolean) : JSX.Element => {
 
-    let limit = getUstensilLimit();
+    let limit = getUstensilLimit(isMediumScreen, isSmallScreen);
 
     if (items.length <= limit) {
       return(
@@ -54,9 +43,6 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
     );
 
   }
-
-  const theme = useTheme();
-  const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
 
   return(
     <>

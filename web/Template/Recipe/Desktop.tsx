@@ -14,6 +14,7 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
 
     const theme = useTheme();
     const isMediumScreen = (!useMediaQuery(theme.breakpoints.up('md')));
+    const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
 
     return (
         <Container type="full" bgcolor="primary.main">
@@ -40,7 +41,7 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
               </Box>
               <Title size={2} mt={3} >Ustensiles</Title>
               <Box display="flex" mb={6}>
-                {renderUstensil(recipe.utensils)}
+                {renderUstensil(recipe.utensils, isMediumScreen, isSmallScreen)}
               </Box>
               <Box mb={5}>
                 <Title size={2} mt={4} mb={0}>Etapes</Title>

@@ -52,8 +52,8 @@ const Carousel :FunctionComponent<CarouselProps>  = (props) => {
             <IconButton onClick={moveBefore} disabled={canMoveBefore() === false} style={{height: "50px"}} >
                 <NavigateBeforeIcon  />    
             </IconButton>
-            {visibleImage.map((item) => {
-                return <Ustensil item={item} />
+            {visibleImage.map((item, index) => {
+                return <Ustensil item={item} key={index} />
             })}
             <IconButton onClick={moveAfter} disabled={canMoveAfter() === false} style={{height: "50px"}} >
                 <NavigateNextIcon  />    
