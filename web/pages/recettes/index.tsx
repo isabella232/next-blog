@@ -43,7 +43,7 @@ export default Index;
 
 export async function getServerSideProps({ query: { page = 1 } }) {
 
-  const limit = 3;
+  const limit = 6;
   const start = parseInt(page) === 1 ? 0 : (parseInt(page) - 1) * limit;
 
   const receiptsResponse = await fetch(`${config.strapiUrl}/recipes?_sort=id:DESC&_limit=${limit}&_start=${start}`);

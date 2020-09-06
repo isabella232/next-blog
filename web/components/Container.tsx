@@ -15,28 +15,13 @@ type ContainerProps = {
 
 const Container : FunctionComponent<ContainerProps> = (props) => {
 
-    const getMaxWidth = (theme) : string => {
-        const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
-        const isMediumScreen = (!useMediaQuery(theme.breakpoints.up('md')));
-
-        if(isSmallScreen === true) return `${theme.breakpoints.values.sm}px`;
-
-        if(isMediumScreen === true) return `${theme.breakpoints.values.md}px`;
-
-        return `${theme.breakpoints.values.lg}px`;
-    }
-
     const getStyles = () => {
-
-        const theme = useTheme();
     
         let styles = {
             container: {
-                maxWidth : getMaxWidth(theme),
-                flexGrow: 1,
+                maxWidth : "1280px",
                 marginLeft: 'auto',
                 marginRight: 'auto',
-                width: 'auto'
             },
             containerFull: {
                 height: '280px'
@@ -63,7 +48,7 @@ const Container : FunctionComponent<ContainerProps> = (props) => {
           }
 
     }
-    
+
     return(
         <Box className={getClassName(props.type)} {...props}>
             {props.children}

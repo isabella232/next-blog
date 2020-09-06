@@ -11,10 +11,11 @@ type ItemProps = {
         created_at: string,
     },
     type: string,
-    width: string
+    width: string,
+    maxWidth: string
   }
 
-const Item: FunctionComponent<ItemProps> = ( { item : { title, description, difficulty, cover, created_at, slug }, type, width = "25%"} ) => {
+const Item: FunctionComponent<ItemProps> = ( { item : { title, description, difficulty, cover, created_at, slug }, type, maxWidth} ) => {
 
     const printContentResume = (description :string, letters :number) : string => {
         if(description === null) return "";
@@ -36,7 +37,8 @@ const Item: FunctionComponent<ItemProps> = ( { item : { title, description, diff
                 as: `/recettes/${slug}`
             }}
             description={<ReactMarkdown source={printContentResume(description, 100)}/>}
-            width={width}
+            width={"100%"}
+            maxWidth={maxWidth}
         />
     );
 

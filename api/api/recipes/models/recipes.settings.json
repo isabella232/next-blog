@@ -10,10 +10,12 @@
   },
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "text"
+      "type": "text",
+      "required": true
     },
     "difficulty": {
       "type": "enumeration",
@@ -27,15 +29,16 @@
       "model": "file",
       "via": "related",
       "allowedTypes": [
-        "images",
         "files",
+        "images",
         "videos"
       ],
       "plugin": "upload",
-      "required": false
+      "required": true
     },
     "slug": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "ingredient": {
       "type": "component",
