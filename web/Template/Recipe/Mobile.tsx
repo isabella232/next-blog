@@ -2,7 +2,6 @@ import config from "@config/config";
 import Title from '@components/Title';
 import Image from '@components/Image/Image';
 import Ingredients from '@components/Recipe/Ingredients/Ingredients';
-import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import Container from '@components/Container';
 import { List as StepsList } from '@components/Recipe/Step/List';
 import Box from '@material-ui/core/Box';
@@ -18,6 +17,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { valueExist } from "app/helper";
 
 const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
 
@@ -47,42 +47,57 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
     }
 
     const getInformation = (recipe, isMediumScreen, isSmallScreen) => {
+
+        if(valueExist(recipe, 'difficulty')){
+
+        }
+
         return(
             <>
                 <TableContainer component={Paper}>
                     <Table  aria-label="simple table">
                         <TableBody>
+                            {valueExist(recipe, 'difficulty') && 
                             <TableRow key={1}>
                                 <TableCell component="th" scope="row" align="center">
                                     Difficulté
                                 </TableCell>
                                 <TableCell align="center">{recipe.difficulty}</TableCell>
                             </TableRow>
+                            }
+                            {valueExist(recipe, 'prep_time') && valueExist(recipe, 'cook_time') && 
                             <TableRow key={2}>
                                 <TableCell component="th" scope="row" align="center">
                                 Temps total
                                 </TableCell>
                                 <TableCell align="center">{getTotalCookTime(recipe.prep_time, recipe.cook_time)}</TableCell>
                             </TableRow>
+                            }
+                            {valueExist(recipe, 'cook_time') && 
                             <TableRow key={3}>
                                 <TableCell component="th" scope="row" align="center">
                                 Temps de cuisson
                                 </TableCell>
                                 <TableCell align="center">{getTime(recipe.cook_time)}</TableCell>
                             </TableRow>
+                            }
+                            {valueExist(recipe, 'prep_time') && 
                             <TableRow key={4}>
                                 <TableCell component="th" scope="row" align="center">
                                 Temps de préparation
                                 </TableCell>
                                 <TableCell align="center">{getTime(recipe.prep_time)}</TableCell>
                             </TableRow>
+                            }
                         </TableBody>
                     </Table>
             </TableContainer>
+            {valueExist(recipe, 'utensils') &&
             <Box mt={1} display="flex" flexDirection="column" alignItems="center">
                 <Title size={2}>Ustensil</Title>
                 {renderUstensil(recipe.utensils, isMediumScreen, isSmallScreen)}
             </Box>
+            }
           </>
         )
     }
@@ -115,13 +130,17 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
             </Box>
             <Box bgcolor="grey.100">
                 <Tabs value={tabValue} p={1} centered onChange={updateTab} >
+                    {valueExist(recipe, 'steps') && 
                     <Tab label="Etapes"  />
+                    }
+                    {valueExist(recipe, 'ingredient') && 
                     <Tab label="Ingredients" />
+                    }
                     <Tab label="Informations" />
                 </Tabs>
                 <Box p={3}>
-                    {tabValue === 0 ? getStep(recipe.steps) : ''}
-                    {tabValue === 1 ? getIngredients(recipe.ingredient) : ''}
+                    {tabValue === 0 && valueExist(recipe, 'steps') ? getStep(recipe.steps) : ''}
+                    {tabValue === 1 && valueExist(recipe, 'ingredient') ? getIngredients(recipe.ingredient) : ''}
                     {tabValue === 2 ? getInformation(recipe, isMediumScreen, isSmallScreen) : ''}
                 </Box>
             </Box>

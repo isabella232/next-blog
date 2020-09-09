@@ -21,9 +21,10 @@ const Recipes = (props) : JSX.Element => {
               alignItems={isSmallScreen === true ? 'center': 'flex-start'}
               {...props}
             >
-              {recipes.map((recipe) => {
+              {recipes.map((recipe, index) => {
                 return (
-                  <Item 
+                  <Item
+                    key={index}
                     item={recipe} 
                     type="large" 
                   />

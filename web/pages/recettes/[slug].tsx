@@ -47,8 +47,10 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
   return(
     <>
       {isSmallScreen === false ? 
-        <Desktop recipe={recipe} renderUstensil={renderUstensil} /> : 
-        <Mobile  recipe={recipe} renderUstensil={renderUstensil} /> }
+        <Desktop recipe={recipe} renderUstensil={renderUstensil} /> 
+      : 
+        <Mobile  recipe={recipe} renderUstensil={renderUstensil} /> 
+      }
     </>
   )
   

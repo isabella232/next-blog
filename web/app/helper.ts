@@ -33,3 +33,13 @@ export function getTime(time : number) : string {
 
     return 5;
  }
+
+ export function valueExist(object, propriety : string) : boolean
+ {
+    if(object.hasOwnProperty(propriety) === false || object[propriety] === null) return false;
+
+    if(typeof object[propriety] === "string" || Array.isArray(object[propriety])) return ( object[propriety].length > 0);
+
+    return true;
+ }
+

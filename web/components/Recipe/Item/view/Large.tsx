@@ -20,8 +20,7 @@ type ItemProps = {
     maxWidth: string
 }
 
-const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, description, link, width, maxWidth } ) => {
-    
+const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, description, link } ) => {
 
     const getMaxWidth = () => {
         return `${(1280/4)-16}px`;
