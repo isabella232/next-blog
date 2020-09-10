@@ -48,12 +48,11 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
 
     const getInformation = (recipe, isMediumScreen, isSmallScreen) => {
 
-        if(valueExist(recipe, 'difficulty')){
-
-        }
-
         return(
             <>
+                {valueExist(recipe, 'source') && 
+                    <small>Recette inspiré/traduite de <a target="blank" href={recipe.source}>{recipe.source}</a></small>
+                }
                 <TableContainer component={Paper}>
                     <Table  aria-label="simple table">
                         <TableBody>

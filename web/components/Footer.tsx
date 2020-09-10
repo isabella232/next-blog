@@ -14,12 +14,7 @@ const Footer: FunctionComponent = () => {
 
                 <Box>
                     <Link href="/">
-                        <Button >
-                            Mention Légale
-                        </Button>
-                    </Link>
-                    <Link href="/">
-                        <Button >
+                        <Button size="small" >
                             Politique de confidentialité
                         </Button>
                     </Link>

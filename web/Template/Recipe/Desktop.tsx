@@ -45,29 +45,32 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
         
         <Container display="flex">
     
-        <Box mr={5} ml={2} width="100%">
-          {valueExist(recipe, "description") && 
-            <Box mb={5} >
-              <p>{recipe.description}</p>
+          <Box mr={5} ml={2} width="100%">
+            {valueExist(recipe, "description") && 
+              <Box mb={5} >
+                <p>{recipe.description}</p>
+                {valueExist(recipe, 'source') && 
+                <small>Recette inspiré/traduite de <a target="blank" href={recipe.source}>{recipe.source}</a></small>
+                }
+              </Box>
+            }
+            {valueExist(recipe, 'utensils') &&
+            <>
+            <Title size={2} mt={3} >Ustensiles</Title>
+            <Box display="flex" mb={6}>
+              {renderUstensil(recipe.utensils, isMediumScreen, isSmallScreen)}
             </Box>
-          }
-          {valueExist(recipe, 'utensils') &&
-          <>
-          <Title size={2} mt={3} >Ustensiles</Title>
-          <Box display="flex" mb={6}>
-            {renderUstensil(recipe.utensils, isMediumScreen, isSmallScreen)}
+            </>
+            }
+            { valueExist(recipe, 'steps') && 
+            <Box mb={5}>
+              <Title size={2} mt={4} mb={0}>Etapes</Title>
+              <StepsList steps={recipe.steps} />
+            </Box>
+            }
           </Box>
-          </>
-          }
-          { valueExist(recipe, 'steps') && 
-          <Box mb={5}>
-            <Title size={2} mt={4} mb={0}>Etapes</Title>
-            <StepsList steps={recipe.steps} />
-          </Box>
-          }
-        </Box>
 
-        <Box width={isMediumScreen === true ? 300 : 380} mt={-30} mr={1} ml={1}>
+          <Box width={isMediumScreen === true ? 300 : 380} mt={-30} mr={1} ml={1}>
           <Image 
             width={isMediumScreen === true ? "300px" : "380px"} 
             height={isMediumScreen === true ? "300px" : "380px"} 
@@ -92,7 +95,7 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
           }
         </Box>
 
-      </Container>
+        </Container>
       </>
       );
 }
