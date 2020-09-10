@@ -18,6 +18,7 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
     const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
     
     return (
+      <>
         <Container type="full" bgcolor="primary.main">
     
           <Container display="flex" justifyContent="space-between" height={280}>
@@ -40,58 +41,59 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
     
           </Container>
     
-          <Container display="flex">
-    
-            <Box mr={5} ml={2} width="100%">
-              {valueExist(recipe, "description") && 
-                <Box mb={5} >
-                  <p>{recipe.description}</p>
-                </Box>
-              }
-              {valueExist(recipe, 'utensils') &&
-              <>
-              <Title size={2} mt={3} >Ustensiles</Title>
-              <Box display="flex" mb={6}>
-                {renderUstensil(recipe.utensils, isMediumScreen, isSmallScreen)}
-              </Box>
-              </>
-              }
-              { valueExist(recipe, 'steps') && 
-              <Box mb={5}>
-                <Title size={2} mt={4} mb={0}>Etapes</Title>
-                <StepsList steps={recipe.steps} />
-              </Box>
-              }
-            </Box>
-    
-            <Box width={isMediumScreen === true ? 300 : 380} mt={-30} mr={1} ml={1}>
-              <Image 
-                width={isMediumScreen === true ? "300px" : "380px"} 
-                height={isMediumScreen === true ? "300px" : "380px"} 
-                src={config.strapiUrl + recipe.cover.formats.small.url} 
-                alt={`${recipe.title} photo`} 
-              />
-              {valueExist(recipe, "ingredient") && 
-              <Box bgcolor="grey.200" p={2} mt={1}>
-                <Box display="flex" justifyContent="space-between" alignItems="center">
-                  <Title size={2} m={0}>Ingredients</Title>
-                  {valueExist(recipe, 'person') && 
-                  <span>{recipe.person} personnes</span>
-                  }
-                </Box>
-                
-                <Box mt={3}>
-                  {recipe.ingredient.map((item) => {
-                    return <Ingredients amount={item.amount} item={item.ingredient} unit={item.unit} />
-                  })}
-                </Box>
-              </Box>
-              }
-            </Box>
-    
-          </Container>
-    
         </Container>
+        
+        <Container display="flex">
+    
+        <Box mr={5} ml={2} width="100%">
+          {valueExist(recipe, "description") && 
+            <Box mb={5} >
+              <p>{recipe.description}</p>
+            </Box>
+          }
+          {valueExist(recipe, 'utensils') &&
+          <>
+          <Title size={2} mt={3} >Ustensiles</Title>
+          <Box display="flex" mb={6}>
+            {renderUstensil(recipe.utensils, isMediumScreen, isSmallScreen)}
+          </Box>
+          </>
+          }
+          { valueExist(recipe, 'steps') && 
+          <Box mb={5}>
+            <Title size={2} mt={4} mb={0}>Etapes</Title>
+            <StepsList steps={recipe.steps} />
+          </Box>
+          }
+        </Box>
+
+        <Box width={isMediumScreen === true ? 300 : 380} mt={-30} mr={1} ml={1}>
+          <Image 
+            width={isMediumScreen === true ? "300px" : "380px"} 
+            height={isMediumScreen === true ? "300px" : "380px"} 
+            src={config.strapiUrl + recipe.cover.formats.small.url} 
+            alt={`${recipe.title} photo`} 
+          />
+          {valueExist(recipe, "ingredient") && 
+          <Box bgcolor="grey.200" p={2} mt={1}>
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+              <Title size={2} m={0}>Ingredients</Title>
+              {valueExist(recipe, 'person') && 
+              <span>{recipe.person} personnes</span>
+              }
+            </Box>
+            
+            <Box mt={3}>
+              {recipe.ingredient.map((item) => {
+                return <Ingredients amount={item.amount} item={item.ingredient} unit={item.unit} />
+              })}
+            </Box>
+          </Box>
+          }
+        </Box>
+
+      </Container>
+      </>
       );
 }
 
