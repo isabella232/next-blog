@@ -2,6 +2,8 @@ import { FunctionComponent } from 'react';
 import Head from 'next/head';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import CookieBanner from 'components/CookieBanner';
+
 
 const Layout: FunctionComponent = (props) => {
     return(
@@ -15,6 +17,7 @@ const Layout: FunctionComponent = (props) => {
                 {props.children}
             </div>
             <Footer />
+            <CookieBanner />
         </div>
     )
 }
