@@ -3,11 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box'
 
-const Image = (props) : JSX.Element => {
+
+const Image = (props) => {
 
     const { width, height, src, alt, ...otherProps } = props;
 
-    let styles : object = {
+    let styles = {
         square: {
             height: `${height}`,
             width: `${width}`,

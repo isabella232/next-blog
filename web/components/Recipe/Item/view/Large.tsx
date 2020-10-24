@@ -6,12 +6,14 @@ import Button from '@material-ui/core/Button';
 import Title from '@components/Title';
 import Image from '@components/Image/Image';
 import ReactMarkdown from 'react-markdown';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 type ItemProps = {
     title: string,
     cover,
     created_at: string,
-    description: ReactMarkdown,
+    description,
     link: {
         href: string,
         as: string
@@ -22,8 +24,17 @@ type ItemProps = {
 
 const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, description, link } ) => {
 
+  const theme = useTheme();
+  const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
+
     const getMaxWidth = () => {
-        return `${(1280/4)-16}px`;
+        const PAGINATION_VALUE = 16;
+
+        if(isSmallScreen === true) return 480 - PAGINATION_VALUE;
+
+        const RECIPE_TOTAL = 4;
+
+        return `${(1280/RECIPE_TOTAL)-PAGINATION_VALUE}px`;
     }
 
     return(

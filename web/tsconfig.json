@@ -19,8 +19,12 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@components/*": ["components/*"],
-      "@config/*": ["./config/*"]
+      "@components/*": [
+        "components/*"
+      ],
+      "@config/*": [
+        "./config/*"
+      ]
     }
   },
   "exclude": [
@@ -29,6 +33,8 @@
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx", "pages/_app.tsx"
+    "**/*.tsx",
+    "pages/_app.tsx",
+    "components/Image/Image.tsx"
   ]
 }

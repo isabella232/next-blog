@@ -64,6 +64,9 @@
     },
     "cook_time": {
       "type": "integer"
+    },
+    "source": {
+      "type": "string"
     }
   }
 }

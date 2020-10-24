@@ -3,16 +3,19 @@ import Large from './view/Large';
 import ReactMarkdown from 'react-markdown';
 
 type ItemProps = {
+    key: any,
     item: {
         title: string,
+        slug,
         description: string,
         difficulty: string,
         image: string,
         created_at: string,
+        cover,
     },
-    type: string,
-    width: string,
-    maxWidth: string
+    type?: string,
+    width?: string,
+    maxWidth?: string
   }
 
 const Item: FunctionComponent<ItemProps> = ( { item : { title, description, difficulty, cover, created_at, slug }, type, maxWidth} ) => {
