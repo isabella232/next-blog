@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mariadb:latest
+    container_name: mysql_next
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: supersecretpassword
+      MYSQL_DATABASE: nextapi
+    networks:
+      - nextapi
+
+  api:
+    image: api # Here the image of the API
+    container_name: api
+    restart: alwys
+    environment:
+      DATABASE_HOST: mysql
+      DATABASE_PORT: 3306
+      DATABASE_NAME: nextapi
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: supersecretpassword
+    networks:
+      - nextapi
+      - client
+
+  client:
+    image: client # Here the image of the client
+    container_name: client
+    restart: always
+    environment:
+      API_URL: api
+      VIRTUAL_HOST: nextapi.fr
+      LETSENCRYPT_HOST: nextapi.fr
+    networks:
+      - nginx
+      - client
+    hostname: nextapi.fr
+
+networks:
+  client:
+  nextapi:
+  nginx:
+    external:
+      name: docker_nginx
