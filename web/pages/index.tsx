@@ -74,8 +74,7 @@ const Home: FunctionComponent<HomeProps> = ({ homeContent, recipes }) => {
 
 export default Home;
 
-export async function getStaticProps() {
-  console.log(config);
+export async function getServerSideProps() {
   // home content request
   const reponseHome = await fetch(config.configuration.strapiUrl + "/home");
   const jsonResponseHome = (await reponseHome.json()) || [];
