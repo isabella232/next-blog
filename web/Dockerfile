@@ -1,20 +1,19 @@
-FROM node:latest as builder
-
-WORKDIR /app
-
-COPY . .
-
-RUN yarn install
-RUN yarn build
-
 FROM node:latest
 
-RUN npm install -g serve
+# Setting working directory. All the path will be relative to WORKDIR
+WORKDIR /usr/src/app
 
-WORKDIR /app
+# Installing dependencies
+COPY package*.json ./
+RUN yarn install
 
-COPY --from=builder /app/build .
+# Copying source files
+COPY . .
 
-EXPOSE 3000
+# Building app
+RUN yarn build
 
-CMD [ "serve", "-s", ".", "-p", "80" ]
+EXPOSE 8080
+
+# Running the app
+CMD [ "npx", "next", "start", "-p", "8080" ]

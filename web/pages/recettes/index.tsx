@@ -1,4 +1,3 @@
-import config from "@config/config";
 import fetch from 'node-fetch'
 import { FunctionComponent } from 'react';
 import { useRouter } from 'next/router';
@@ -46,10 +45,10 @@ export async function getServerSideProps({ query: { page = 1 } }) {
   const limit = 6;
   const start = parseInt(page) === 1 ? 0 : (parseInt(page) - 1) * limit;
 
-  const receiptsResponse = await fetch(`${config.strapiUrl}/recipes?_sort=id:DESC&_limit=${limit}&_start=${start}`);
+  const receiptsResponse = await fetch(`${process.env.API_URL}/recipes?_sort=id:DESC&_limit=${limit}&_start=${start}`);
   const recipes = (await receiptsResponse.json() || [] )
 
-  const numberOfRecipesResponse = await fetch(`${config.strapiUrl}/recipes/count`);
+  const numberOfRecipesResponse = await fetch(`${process.env.API_URL}/recipes/count`);
   const numberOfRecipes = await numberOfRecipesResponse.json();
 
   const lastPage = Math.ceil(numberOfRecipes / limit);

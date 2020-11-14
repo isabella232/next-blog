@@ -1,5 +1,4 @@
 import { FunctionComponent } from 'react';
-import config from "@config/config";
 import Link from 'next/link';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -46,7 +45,7 @@ const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, descrip
             
            {cover && (
                 <div>
-                    <Image width="100%" height="250px" src={config.strapiUrl + cover.formats.small.url} alt={`${title} photo`} />
+                    <Image width="100%" height="250px" src={process.env.API_URL + cover.formats.small.url} alt={`${title} photo`} />
                 </div>
            )}
             <Box display="flex" flexDirection="column" padding={1} justifyContent="space-between" height="150px">

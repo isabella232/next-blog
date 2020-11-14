@@ -14,6 +14,7 @@ import ReactMarkdown from "react-markdown";
 type HomeProps = {
   homeContent: {
     content: string;
+    title: string;
   };
   recipes;
 };
@@ -36,7 +37,7 @@ const Home: FunctionComponent<HomeProps> = ({ homeContent, recipes }) => {
             justifyContent="center"
             mx={1}
           >
-            <Title size={1}>Lorem Impsum ma antedus el yoo</Title>
+            <Title size={1}>{homeContent.title}</Title>
             <p style={{ fontSize: "20px" }}>
               <ReactMarkdown source={homeContent.content} />
             </p>
@@ -75,19 +76,21 @@ const Home: FunctionComponent<HomeProps> = ({ homeContent, recipes }) => {
 export default Home;
 
 export async function getServerSideProps() {
+
   // home content request
-  const reponseHome = await fetch(config.configuration.strapiUrl + "/home");
+  const reponseHome = await fetch(process.env.API_URL + "/home" /*, { agent: httpsAgent } */);
   const jsonResponseHome = (await reponseHome.json()) || [];
 
   // last receipts request
   const reponseRecipes = await fetch(
-    config.configuration.strapiUrl + "/recipes?_limit=4&_sort=id:DESC"
+    process.env.API_URL + "/recipes?_limit=4&_sort=id:DESC"
   );
   const jsonResponseRecipes = (await reponseRecipes.json()) || [];
 
   return {
     props: {
       homeContent: {
+        title: jsonResponseHome.title,
         content: jsonResponseHome.content,
       },
       recipes: jsonResponseRecipes,
