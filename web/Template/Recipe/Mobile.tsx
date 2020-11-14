@@ -1,4 +1,3 @@
-import config from "@config/config";
 import Title from '@components/Title';
 import Image from '@components/Image/Image';
 import Ingredients from '@components/Recipe/Ingredients/Ingredients';
@@ -110,7 +109,7 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
                     <Image 
                         width="100%"
                         height="280px"
-                        src={config.strapiUrl + recipe.cover.formats.small.url} 
+                        src={process.env.API_URL  + recipe.cover.formats.small.url} 
                         alt={`${recipe.title} photo`}
                     />
                 </Box>

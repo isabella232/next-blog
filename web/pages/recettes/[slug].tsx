@@ -1,4 +1,3 @@
-import config from "@config/config";
 import Error from '@components/Error/Error';
 import Box from '@material-ui/core/Box';
 import { Item as Ustensil } from "@components/Recipe/Ustensil/Item";
@@ -61,7 +60,7 @@ export default Recipe;
 
 export async function getServerSideProps({ query: { slug } }) {
 
-  const reponseRecipes = await fetch(`${config.strapiUrl}/recipes?slug=${slug}`);
+  const reponseRecipes = await fetch(`${process.env.API_URL}/recipes?slug=${slug}`);
   let recipe = (await reponseRecipes.json() || []);
 
   if (recipe.length === 0) {

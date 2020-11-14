@@ -1,4 +1,3 @@
-import config from "@config/config";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 import Title from '@components/Title';
@@ -74,7 +73,7 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
           <Image 
             width={isMediumScreen === true ? "300px" : "380px"} 
             height={isMediumScreen === true ? "300px" : "380px"} 
-            src={config.strapiUrl + recipe.cover.formats.small.url} 
+            src={process.env.API_URL  + recipe.cover.formats.small.url} 
             alt={`${recipe.title} photo`} 
           />
           {valueExist(recipe, "ingredient") && 

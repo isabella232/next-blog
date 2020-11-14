@@ -1,5 +1,4 @@
 import { FunctionComponent, ReactElement } from 'react';
-import config from "@config/config";
 import Link from 'next/link';
 
 type ItemProps = {
@@ -14,7 +13,7 @@ const Medium: FunctionComponent<ItemProps> = ( {title, cover, created_at, descri
         <div className="card columns has-background-white-bis mb-5">
             {cover && (
                  <figure className="image column">
-                    <img src={config.strapiUrl + cover.formats.small.url} alt="Placeholder image" />
+                    <img src={process.env.API_URL  + cover.formats.small.url} alt="Placeholder image" />
                 </figure>
             )}
             <div style={style.cardContent} className="card-content column is-three-quarters">

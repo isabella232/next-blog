@@ -1,4 +1,3 @@
-import config from "@config/config";
 import { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box';
 import Image from '@components/Image/Image';
@@ -39,7 +38,7 @@ const Step : FunctionComponent<StepProps> = ({step, number}) => {
             <Box display="flex" justifyContent="center">
                 {step.image !== null && (
                     <Image 
-                        src={config.strapiUrl + step.image.formats.small.url} 
+                        src={process.env.API_URL  + step.image.formats.small.url} 
                         width="450px"
                         height="250px"
                         alt={`Etape ${number} illustration`}
