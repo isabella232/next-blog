@@ -13,7 +13,7 @@ const Medium: FunctionComponent<ItemProps> = ( {title, cover, created_at, descri
         <div className="card columns has-background-white-bis mb-5">
             {cover && (
                  <figure className="image column">
-                    <img src={process.env.API_URL  + cover.formats.small.url} alt="Placeholder image" />
+                    <img src={process.env.IMG_URL  + cover.formats.small.url} alt="Placeholder image" />
                 </figure>
             )}
             <div style={style.cardContent} className="card-content column is-three-quarters">

@@ -28,7 +28,7 @@ const Small: FunctionComponent<ItemProps> = ( {title, cover, created_at, descrip
         >
             {config && (
                 <Box width={isLargeScreen === true ? 1/4 : "100%"}>
-                    <img width="100%" src={process.env.API_URL  + cover.formats.small.url} alt="Placeholder image" />
+                    <img width="100%" src={process.env.IMG_URL  + cover.formats.small.url} alt="Placeholder image" />
                 </Box>
             )}
             <Box display="flex" flexDirection="column" width={isLargeScreen === true ? 3/4 : "100%"} padding={isLargeScreen === true ? 1 : 0}>

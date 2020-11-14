@@ -109,7 +109,7 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
                     <Image 
                         width="100%"
                         height="280px"
-                        src={process.env.API_URL  + recipe.cover.formats.small.url} 
+                        src={process.env.IMG_URL  + recipe.cover.formats.small.url} 
                         alt={`${recipe.title} photo`}
                     />
                 </Box>

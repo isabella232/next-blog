@@ -41,7 +41,7 @@ services:
     restart: always
     environment:
       API_URL: http://strapi:1337
-      #NODE_TLS_REJECT_UNAUTHORIZED: "0"
+      IMG_URL: http://193.168.147.69:1337
     networks:
       - client
     ports:
