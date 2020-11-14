@@ -47,6 +47,6 @@ export default class App extends NextApp {
     }
 }
 
-process.env.API_URL = process.env.API_URL ? process.env.API_URL : "http://127.0.0.1:1337";
-process.env.IMG_URL = process.env.IMG_URL ? process.env.IMG_URL : "http://127.0.0.1:1337";
+//process.env.API_URL = process.env.API_URL ? process.env.API_URL : "http://127.0.0.1:1337";
+//process.env.IMG_URL = process.env.IMG_URL ? process.env.IMG_URL : "http://127.0.0.1:1337";
 // tuto : https://medium.com/javascript-in-plain-english/ssr-with-next-js-styled-components-and-material-ui-b1e88ac11dfa

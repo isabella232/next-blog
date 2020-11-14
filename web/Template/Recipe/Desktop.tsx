@@ -15,7 +15,7 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
     const theme = useTheme();
     const isMediumScreen = (!useMediaQuery(theme.breakpoints.up('md')));
     const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
-    
+    console.log(process.env.IMG_URL);
     return (
       <>
         <Container type="full" bgcolor="primary.main">

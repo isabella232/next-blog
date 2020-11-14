@@ -16,7 +16,7 @@ type IndexProps = {
 const Index: FunctionComponent<IndexProps> = ( { recipes, page, lastPage } ) => {
 
   const router = useRouter();
-
+  
   return (
     <Container mt={5}>
       <Title size={1} color="primary.main">Recettes</Title>
