@@ -90,8 +90,8 @@ export async function getServerSideProps() {
   return {
     props: {
       homeContent: {
-        title: jsonResponseHome.title,
-        content: jsonResponseHome.content,
+        title: (jsonResponseHome.title ? jsonResponseHome.title : null),
+        content: (jsonResponseHome.content ? jsonResponseHome.content : null),
       },
       recipes: jsonResponseRecipes,
     },
