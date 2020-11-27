@@ -2,6 +2,9 @@
 /data
 /api/public/uploads/
 
+# next env variable
+/web/next.config.js
+
 # dependencies
 /web/node_modules
 /.pnp
