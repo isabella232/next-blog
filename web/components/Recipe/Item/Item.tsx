@@ -25,9 +25,14 @@ const Item: FunctionComponent<ItemProps> = ( { item : { title, description, diff
         return description.substr(0, letters) + '...';
     }
 
+    /**
+     * Return the date under the form of "day/month/year"
+     * add +1 of the getMonth method because it starts by 0 
+     * @param string created_at 
+     */
     const printformatDate = (created_at : string) : string => {
         let date = new Date(created_at);
-        return `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+        return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
     }
 
     return(
