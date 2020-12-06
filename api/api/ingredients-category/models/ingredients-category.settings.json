@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "ingredients",
+  "collectionName": "ingredients_categories",
   "info": {
-    "name": "ingredient"
+    "name": "Ingredients Category"
   },
   "options": {
     "increments": true,
@@ -11,9 +11,6 @@
   "attributes": {
     "name": {
       "type": "string"
-    },
-    "category": {
-      "model": "ingredients-category"
     }
   }
 }

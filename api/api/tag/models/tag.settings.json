@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "ingredients",
+  "collectionName": "tags",
   "info": {
-    "name": "ingredient"
+    "name": "Tag"
   },
   "options": {
     "increments": true,
@@ -12,8 +12,9 @@
     "name": {
       "type": "string"
     },
-    "category": {
-      "model": "ingredients-category"
+    "recipes": {
+      "via": "tags",
+      "collection": "recipes"
     }
   }
 }

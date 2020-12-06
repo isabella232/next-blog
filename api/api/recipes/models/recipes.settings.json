@@ -67,6 +67,11 @@
     },
     "source": {
       "type": "string"
+    },
+    "tags": {
+      "collection": "tag",
+      "via": "recipes",
+      "dominant": true
     }
   }
 }

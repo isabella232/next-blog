@@ -78,8 +78,8 @@ export default Home;
 export async function getServerSideProps() {
 
   // home content request
-  const reponseHome = await fetch(process.env.API_URL + "/home" /*, { agent: httpsAgent } */);
-  const jsonResponseHome = (await reponseHome.json()) || [];
+  const reponseHome = await fetch(process.env.API_URL + "/home");
+  const jsonResponseHome = reponseHome ? await reponseHome.json() : [];
 
   // last receipts request
   const reponseRecipes = await fetch(
