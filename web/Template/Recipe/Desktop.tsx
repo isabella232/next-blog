@@ -5,6 +5,7 @@ import Image from '@components/Image/Image';
 import Info from '@components/Recipe/Info/Info';
 import Ingredients from '@components/Recipe/Ingredients/Ingredients';
 import Container from '@components/Container';
+import { List as TagsList } from '@components/Recipe/Tag/List';
 import { List as StepsList } from '@components/Recipe/Step/List';
 import {  getTotalCookTime, getTime } from 'app/helper';
 import Box from '@material-ui/core/Box';
@@ -15,7 +16,7 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
     const theme = useTheme();
     const isMediumScreen = (!useMediaQuery(theme.breakpoints.up('md')));
     const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
-
+    
     return (
       <>
         <Container type="full" bgcolor="primary.main">
@@ -46,19 +47,24 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
     
           <Box mr={5} ml={2} width="100%">
             {valueExist(recipe, "description") && 
-              <Box mb={5} >
+              <Box mb={2} >
                 <p>{recipe.description}</p>
                 {valueExist(recipe, 'source') && 
                 <small>Recette inspiré/traduite de <a target="blank" href={recipe.source}>{recipe.source}</a></small>
                 }
               </Box>
             }
+            {recipe.tags.length > 0 &&
+              <Box mb={4}>
+                <TagsList tags={recipe.tags} />
+              </Box>
+            }
             {valueExist(recipe, 'utensils') &&
             <>
-            <Title size={2} mt={3} >Ustensiles</Title>
-            <Box display="flex" mb={6}>
-              {renderUstensil(recipe.utensils, isMediumScreen, isSmallScreen)}
-            </Box>
+              <Title size={2} mt={3} >Ustensiles</Title>
+              <Box display="flex" mb={6}>
+                {renderUstensil(recipe.utensils, isMediumScreen, isSmallScreen)}
+              </Box>
             </>
             }
             { valueExist(recipe, 'steps') && 
@@ -86,8 +92,8 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
             </Box>
             
             <Box mt={3}>
-              {recipe.ingredient.map((item) => {
-                return <Ingredients amount={item.amount} item={item.ingredient} unit={item.unit} />
+              {recipe.ingredient.map((item, index) => {
+                return <Ingredients amount={item.amount} item={item.ingredient} unit={item.unit} key={item.id} />
               })}
             </Box>
           </Box>

@@ -16,9 +16,9 @@ type ItemProps = {
     type?: string,
     width?: string,
     maxWidth?: string
-  }
+}
 
-const Item: FunctionComponent<ItemProps> = ( { item : { title, description, difficulty, cover, created_at, slug }, type, maxWidth} ) => {
+const Item: FunctionComponent<ItemProps> = ( { item : { title, description, cover, created_at, slug }, maxWidth} ) => {
 
     const printContentResume = (description :string, letters :number) : string => {
         if(description === null) return "";

@@ -53,7 +53,7 @@ const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, descrip
                     />
                 </div>
            )}
-            <Box display="flex" flexDirection="column" padding={1} justifyContent="space-between" height="150px">
+            <Box display="flex" flexDirection="column" padding={1} justifyContent="space-between">
 
                 <Box color="grey.600">
                     {description}

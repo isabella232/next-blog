@@ -31,7 +31,7 @@ const Recipe :FunctionComponent<RecipeProps> = ({ recipe }) => {
       return(
         <Box display="flex">
           {items.map( (item) => {
-            return <Box mr={3}><Ustensil item={item} /></Box>
+            return <Box mr={3} key={item.id}><Ustensil item={item} /></Box>
           })}
         </Box>
       );

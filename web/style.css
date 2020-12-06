@@ -5,6 +5,9 @@ body {
   margin: 0;
 }
 
+p {
+  font-size: 1.1rem;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
 
