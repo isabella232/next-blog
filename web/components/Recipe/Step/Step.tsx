@@ -39,7 +39,7 @@ const Step : FunctionComponent<StepProps> = ({step, number}) => {
                 {step.image !== null && (
                     <Image 
                         src={process.env.IMG_URL  + step.image.formats.small.url} 
-                        width="450px"
+                        width="350px"
                         height="250px"
                         alt={`Etape ${number} illustration`}
                         borderColor="grey.200"
