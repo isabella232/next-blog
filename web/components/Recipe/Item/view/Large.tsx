@@ -29,7 +29,7 @@ const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, descrip
     const getMaxWidth = () => {
         const PAGINATION_VALUE = 16;
 
-        if(isSmallScreen === true) return 480 - PAGINATION_VALUE;
+        if(isSmallScreen === true) return 360 - PAGINATION_VALUE;
 
         const RECIPE_TOTAL = 4;
 
