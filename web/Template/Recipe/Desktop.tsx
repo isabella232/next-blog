@@ -72,9 +72,9 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
           <Box width={isMediumScreen === true ? 300 : 380} mt={-30} mr={1} ml={1}>
           <Image 
             width={isMediumScreen === true ? "300px" : "380px"} 
-            height={isMediumScreen === true ? "300px" : "380px"} 
-            src={process.env.IMG_URL  + recipe.cover.formats.small.url} 
-            alt={`${recipe.title} photo`} 
+            height={isMediumScreen === true ? "300px" : "380px"}
+            alt={`${recipe.title} photo`}
+            img={recipe.cover}
           />
           {valueExist(recipe, "ingredient") && 
           <Box bgcolor="grey.200" p={2} mt={1}>

@@ -17,6 +17,7 @@ import Paper from '@material-ui/core/Paper';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { valueExist } from "app/helper";
+import Item from '@components/Recipe/Item/Item';
 
 const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
 
@@ -109,8 +110,8 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
                     <Image 
                         width="100%"
                         height="280px"
-                        src={process.env.IMG_URL  + recipe.cover.formats.small.url} 
                         alt={`${recipe.title} photo`}
+                        img={recipe.cover}
                     />
                 </Box>
                 <Box

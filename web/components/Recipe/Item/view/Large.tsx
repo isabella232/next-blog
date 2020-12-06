@@ -45,7 +45,12 @@ const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, descrip
             
            {cover && (
                 <div>
-                    <Image width="100%" height="250px" src={process.env.IMG_URL + cover.formats.small.url} alt={`${title} photo`} />
+                    <Image 
+                    width="100%" 
+                    height="250px"
+                    alt={`${title} photo`}
+                    img={cover}
+                    />
                 </div>
            )}
             <Box display="flex" flexDirection="column" padding={1} justifyContent="space-between" height="150px">

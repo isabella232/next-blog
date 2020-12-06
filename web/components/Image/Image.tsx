@@ -1,25 +1,45 @@
 
 import { makeStyles } from '@material-ui/core/styles';
-import { FunctionComponent } from 'react';
 import Box from '@material-ui/core/Box'
-
 
 const Image = (props) => {
 
-    const { width, height, src, alt, ...otherProps } = props;
+    const 
+        { width, height, src, alt, objectFit = true, img, ...otherProps } :
+        { width: string, height?: string, src: string, alt: string, objectFit: boolean, img: any } 
+    = props;
+
+    /** Style */
 
     let styles = {
         square: {
             height: `${height}`,
             width: `${width}`,
-            objectFit: "cover"
+            objectFit: `${objectFit === true ? 'cover' : 'fill'}`,
         },
     };
 
     const useStyles = makeStyles(styles);
     const classes = useStyles();
 
-    return <Box component={"img"} src={src} alt={alt} className={classes.square} {...otherProps} ></Box>
+    /**
+     * Get smallest image format, if the small format doesn't exist return just the image
+     * @param img strapi img object
+     */
+    const getImage = (img) : string => {
+        if(img.formats.small === undefined) {
+            return img.url
+        }
+        return img.formats.small.url;
+    }
+
+    return <Box 
+            component={"img"} 
+            src={process.env.IMG_URL + getImage(img)} 
+            alt={alt} 
+            className={classes.square} 
+            {...otherProps} 
+        ></Box>
 }
 
 export default Image;

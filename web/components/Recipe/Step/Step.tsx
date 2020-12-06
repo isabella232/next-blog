@@ -36,11 +36,12 @@ const Step : FunctionComponent<StepProps> = ({step, number}) => {
                 <p >{step.content}</p>
             </Box>
             <Box display="flex" justifyContent="center">
+                
                 {step.image !== null && (
-                    <Image 
-                        src={process.env.IMG_URL  + step.image.formats.small.url} 
+                    <Image
+                        img={step.image}
                         width="350px"
-                        height="250px"
+                        objectFit={false}
                         alt={`Etape ${number} illustration`}
                         borderColor="grey.200"
                         border={1} 
