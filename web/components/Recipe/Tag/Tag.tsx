@@ -1,19 +1,26 @@
+import { colors } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 
 const Tag  = ({tag, color}) => {
     
     return(
         <Box 
-            component="span" 
-            m={1} 
-            p={0.8}
-            border={2} 
-            //borderColor="grey.100"
-            borderColor={color}
-            //bgcolor={color}
+            component="li"
+            ml={0}
+            mr={2}
+            my={1}
+            py={0.5}
+            px={2.2}
+            bgcolor={color}
             borderRadius={20}
-            fontSize="0.9rem"
-            color="grey.600"
+            fontSize="0.8rem"
+            color="grey.900"
+            style={{
+                textTransform: 'uppercase',
+                listStyleType: "none",
+                fontWeight : 500,
+                letterSpacing: 0.3
+            }}
         >
             {tag.name}
         </Box>

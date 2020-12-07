@@ -69,7 +69,7 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
             }
             { valueExist(recipe, 'steps') && 
             <Box mb={5}>
-              <Title size={2} mt={4} mb={0}>Etapes</Title>
+              <Title size={2} mt={6} mb={0}>Etapes</Title>
               <StepsList steps={recipe.steps} />
             </Box>
             }
@@ -92,7 +92,9 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
             </Box>
             
             <Box mt={3}>
-              {recipe.ingredient.map((item, index) => {
+              {recipe.ingredient
+              .filter(item => item.ingredient !== null) // prevent from adding null value
+              .map((item) => {
                 return <Ingredients amount={item.amount} item={item.ingredient} unit={item.unit} key={item.id} />
               })}
             </Box>

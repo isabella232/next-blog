@@ -15,9 +15,9 @@ export const List : FunctionComponent<ListProps> = ({tags}) => {
      */
     const getColor = (index : number) : string => {
         let colors = [
-            "#9E80E1",
-            "#E18093",
-            "#C3E180",
+            "#80E19E",
+            "#57D7BE",
+            "#80C3E1",
         ];
 
         let modulo = (index + 1) % colors.length;
@@ -25,16 +25,16 @@ export const List : FunctionComponent<ListProps> = ({tags}) => {
         return colors[modulo];
     }
 
-
     return(
-        <Box marginY={1}>
+        <Box marginY={1} component="ul" display="flex" flexWrap="wrap" p={0}>
             {tags.map((tag, index) => {
                 return <Tag 
                     tag={tag} 
-                    color={getColor(index)} 
-                    isFirst={index === 0 ? true: false}
+                    color={getColor(index)}
                     key={tag.id}
-                    style={{ wordWrap: "break-word" }}
+                    style={{ 
+                        wordWrap: "break-word", 
+                    }}
                 />
             })}
         </Box>

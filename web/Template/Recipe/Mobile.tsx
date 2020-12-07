@@ -17,7 +17,7 @@ import Paper from '@material-ui/core/Paper';
 import { useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { valueExist } from "app/helper";
-import Item from '@components/Recipe/Item/Item';
+import { List as TagsList } from '@components/Recipe/Tag/List';
 
 const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
 
@@ -38,7 +38,9 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
     const getIngredients = (ingredient) => {
         return (
             <div>
-                {ingredient.map((item, index) => {
+                {ingredient
+                .filter(item => item.ingredient !== null) // prevent from adding null value
+                .map((item, index) => {
                     return <Ingredients amount={item.amount} item={item.ingredient} unit={item.unit} key={index}/>
                 })}
             </div>
@@ -91,12 +93,20 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
                         </TableBody>
                     </Table>
             </TableContainer>
+
+            {recipe.tags.length > 0 &&
+              <Box>
+                <TagsList tags={recipe.tags} />
+              </Box>
+            }
+            
             {valueExist(recipe, 'utensils') &&
             <Box mt={1} display="flex" flexDirection="column" alignItems="center">
                 <Title size={2}>Ustensil</Title>
                 {renderUstensil(recipe.utensils, isMediumScreen, isSmallScreen)}
             </Box>
             }
+
           </>
         )
     }

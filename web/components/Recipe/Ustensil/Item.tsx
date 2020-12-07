@@ -10,7 +10,6 @@ export const Item = ({item}) => {
                 height="120px" 
                 alt={`${item.name} photo`}
                 img={item.cover}
-                objectFit={false}
             />
             <Box bgcolor="grey.200" pl={0.5}>
                 <span style={{fontSize: "13px"}} >{item.name}</span>
