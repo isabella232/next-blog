@@ -39,12 +39,12 @@ const Item: FunctionComponent<ItemProps> = ( { item : { title, description, cove
         <Large
             title={title}
             cover={cover}
-            created_at={printformatDate(created_at)}
+            //created_at={printformatDate(created_at)}
             link={{
                 href: "/recettes/[slug]",
                 as: `/recettes/${slug}`
             }}
-            description={<ReactMarkdown source={printContentResume(description, 100)}/>}
+            //description={<ReactMarkdown source={printContentResume(description, 100)}/>}
             width={"100%"}
             maxWidth={maxWidth}
         />

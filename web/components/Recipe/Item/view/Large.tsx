@@ -37,35 +37,59 @@ const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, descrip
     }
 
     return(
-        <Box boxShadow={1}  bgcolor="background.main" margin={1} width="100%" maxWidth={getMaxWidth()} >
-            <Box display="flex" justifyContent="center" padding={1} minHeight="50px" flexDirection="column">
+        <Box 
+            boxShadow={1}  
+            bgcolor="background.main" 
+            margin={1} 
+            width="100%" 
+            maxWidth={getMaxWidth()} 
+            height={310}
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+        >
+            <Box 
+                display="flex" 
+                justifyContent="center" 
+                padding={1} minHeight="50px" 
+                flexDirection="column"
+            >
                 <Title m={0} size={3}>{title}</Title>
-                <small>{created_at}</small>
             </Box>
             
-           {cover && (
-                <div>
+            <Box position="relative">
+                {cover && (
                     <Image 
-                    width="100%" 
-                    height="250px"
-                    alt={`${title} photo`}
-                    img={cover}
+                        width="100%" 
+                        height="250px"
+                        alt={`${title} photo`}
+                        img={cover}
+                        position="absolute"
+                        zIndex="modal"
+                        bottom={0}
                     />
-                </div>
-           )}
-            <Box display="flex" flexDirection="column" padding={1} justifyContent="space-between">
+                )}
 
-                <Box color="grey.600">
-                    {description}
-                </Box>
-
-                <Box display="flex" justifyContent="flex-end" >
+                <Box position="absolute" bottom={0} zIndex="tooltip" width="100%" >
                     <Link href={link.href} as={link.as} >
-                        <Button variant="contained" color="secondary" size="small">Lire la suite</Button>
+                        <Box style={{backgroundColor: "rgba(0, 0, 0, 0.5)"}} textAlign="center">
+                            <Box 
+                                component="span" 
+                                color="white"
+                                fontWeight={600}
+                                style={{
+                                    textTransform: 'uppercase',
+                                    letterSpacing: 0.3,
+                                }}
+                            >
+                                Accéder à la recette
+                            </Box>
+                        </Box>
                     </Link>
                 </Box>
 
             </Box>
+
         </Box>
     )
 }
