@@ -69,7 +69,7 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
             }
             { valueExist(recipe, 'steps') && 
             <Box mb={5}>
-              <Title size={2} mt={6} mb={0}>Etapes</Title>
+              <Title size={2} mt={6} mb={0}>Étapes</Title>
               <StepsList steps={recipe.steps} />
             </Box>
             }

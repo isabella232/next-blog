@@ -140,7 +140,7 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
             <Box bgcolor="grey.100">
                 <Tabs value={tabValue} p={1} centered onChange={updateTab} >
                     {valueExist(recipe, 'steps') && 
-                    <Tab label="Etapes"  />
+                    <Tab label="Étapes"  />
                     }
                     {valueExist(recipe, 'ingredient') && 
                     <Tab label="Ingredients" />
