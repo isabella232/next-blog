@@ -6,11 +6,15 @@ body {
 }
 
 p {
-  word-break: break-all;
+  font-size: 1.1rem;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Sniglet&display=swap');
 
 h1, h2 {
   font-family: 'Sniglet';
+}
+
+a {
+  text-decoration: none;
 }

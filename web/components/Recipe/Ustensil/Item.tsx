@@ -5,7 +5,12 @@ export const Item = ({item}) => {
 
     return (
         <Box width="160px" border={1} borderColor={"grey.200"} display="flex" flexDirection="column" >
-            <Image width="160px" height="120px" src={process.env.API_URL  + item.cover.formats.thumbnail.url} alt={`${item.name} photo`}  />
+            <Image 
+                width="160px" 
+                height="120px" 
+                alt={`${item.name} photo`}
+                img={item.cover}
+            />
             <Box bgcolor="grey.200" pl={0.5}>
                 <span style={{fontSize: "13px"}} >{item.name}</span>
             </Box>

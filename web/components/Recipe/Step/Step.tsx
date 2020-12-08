@@ -1,6 +1,7 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useState } from 'react';
 import Box from '@material-ui/core/Box';
 import Image from '@components/Image/Image';
+import Link from 'next/link';
 
 type StepProps = {
     step: {
@@ -8,11 +9,14 @@ type StepProps = {
         id: number,
         content: string,
         image?,
+        related_recipe?
     }
     number: number
 }
 
 const Step : FunctionComponent<StepProps> = ({step, number}) => {
+
+    const [isShown, setIsShown] = useState(false);
     
     return(
         <Box display="flex" flexDirection="column">
@@ -33,14 +37,43 @@ const Step : FunctionComponent<StepProps> = ({step, number}) => {
                 >
                     {number}
                 </Box>
-                <p >{step.content}</p>
+                <p>
+                {step.content}
+                {step.related_recipe !== null && (
+                    <>
+                        <br/>
+                        <Box component="span" color="primary.main">
+                            <Link 
+                                href={`/recettes/${step.related_recipe.slug}`}
+                                passHref
+                            >
+                                
+                                <Box 
+                                    component="a" 
+                                    target="blank" 
+                                    color="secondary.main"
+                                    style={{
+                                        textDecoration: `${isShown === true ? "underline" : "none"}`,
+                                    }}
+                                    fontWeight={600}
+                                    onMouseEnter={() => setIsShown(true)}
+                                    onMouseLeave={() => setIsShown(false)}
+                                >
+                                        {step.related_recipe.title}
+                                </Box>
+                            </Link>
+                        </Box>
+                    </>
+                )}
+                </p>
             </Box>
             <Box display="flex" justifyContent="center">
+                
                 {step.image !== null && (
-                    <Image 
-                        src={process.env.API_URL  + step.image.formats.small.url} 
-                        width="450px"
-                        height="250px"
+                    <Image
+                        img={step.image}
+                        width="350px"
+                        objectFit={false}
                         alt={`Etape ${number} illustration`}
                         borderColor="grey.200"
                         border={1} 

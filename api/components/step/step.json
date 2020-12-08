@@ -19,6 +19,9 @@
       ],
       "plugin": "upload",
       "required": false
+    },
+    "related_recipe": {
+      "model": "recipes"
     }
   }
 }
