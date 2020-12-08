@@ -14,3 +14,7 @@ p {
 h1, h2 {
   font-family: 'Sniglet';
 }
+
+a {
+  text-decoration: none;
+}
