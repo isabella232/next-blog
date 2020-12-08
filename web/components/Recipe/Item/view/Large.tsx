@@ -1,10 +1,8 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useState } from 'react';
 import Link from 'next/link';
 import Box from '@material-ui/core/Box';
-import Button from '@material-ui/core/Button';
 import Title from '@components/Title';
 import Image from '@components/Image/Image';
-import ReactMarkdown from 'react-markdown';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useTheme } from '@material-ui/core/styles';
 
@@ -23,13 +21,15 @@ type ItemProps = {
 
 const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, description, link } ) => {
 
-  const theme = useTheme();
-  const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
+    const theme = useTheme();
+    const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
+
+    const [isShown, setIsShown] = useState(false);
 
     const getMaxWidth = () => {
         const PAGINATION_VALUE = 16;
 
-        if(isSmallScreen === true) return 480 - PAGINATION_VALUE;
+        if(isSmallScreen === true) return 360 - PAGINATION_VALUE;
 
         const RECIPE_TOTAL = 4;
 
@@ -37,30 +37,63 @@ const Large: FunctionComponent<ItemProps> = ( {title, cover, created_at, descrip
     }
 
     return(
-        <Box boxShadow={1}  bgcolor="background.main" margin={1} width="100%" maxWidth={getMaxWidth()} >
-            <Box display="flex" justifyContent="center" padding={1} minHeight="50px" flexDirection="column">
-                <Title m={0} size={3}>{title}</Title>
-                <small>{created_at}</small>
-            </Box>
-            
-           {cover && (
-                <div>
-                    <Image width="100%" height="250px" src={process.env.IMG_URL + cover.formats.small.url} alt={`${title} photo`} />
-                </div>
-           )}
-            <Box display="flex" flexDirection="column" padding={1} justifyContent="space-between" height="150px">
+        <Box 
+            boxShadow={1}  
+            bgcolor="background.main" 
+            margin={1}
+            mb={4}
+            width="100%" 
+            maxWidth={getMaxWidth()} 
+            height={310}
+            display="flex"
+            flexDirection="column"
+            justifyContent="space-between"
+        >
+            <Link href={link.href} as={link.as} >
+                <Box 
+                    style={{
+                        cursor: "pointer",
+                    }}
+                    onMouseEnter={() => setIsShown(true)}
+                    onMouseLeave={() => setIsShown(false)}
+                >
+                    <Box 
+                        display="flex" 
+                        justifyContent="center" 
+                        padding={1} 
+                        height={55} 
+                        flexDirection="column"
+                    >
+                        <Title m={0} size={3} overflow="hidden">{title}</Title>
+                    </Box>
+                
+                    <Box position="relative">
+                        {cover && (
+                            <Image 
+                                width="100%" 
+                                height="250px"
+                                alt={`${title} photo`}
+                                img={cover}
+                                top={0}
+                                position="absolute"
+                                zIndex="modal"
+                                
+                            />
+                        )}
+                        <Box 
+                            bgcolor={isShown === true ? "rgba(0, 0, 0, 0.2)" : "rgba(0, 0, 0, 0)"}
+                            zIndex="tooltip" 
+                            position="absolute"  
+                            height="250px" 
+                            width="100%"
+                            top={0}
+                        >
 
-                <Box color="grey.600">
-                    {description}
+                        </Box>
+                    </Box>
                 </Box>
+            </Link>
 
-                <Box display="flex" justifyContent="flex-end" >
-                    <Link href={link.href} as={link.as} >
-                        <Button variant="contained" color="secondary" size="small">Lire la suite</Button>
-                    </Link>
-                </Box>
-
-            </Box>
         </Box>
     )
 }

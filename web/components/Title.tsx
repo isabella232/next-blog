@@ -12,13 +12,20 @@ type TitleProps = {
 
 const Title: FunctionComponent<TitleProps> = (props) => {
     
+    /**
+     * Get default font size depending of the type of title (h1, h2, h3 etc)
+     * @param size 
+     */
     const getFontSize = (size : number) : string => {
         const theme = useTheme();
         const isSmallScreen = (!useMediaQuery(theme.breakpoints.up('sm')));
+        const isMediumScreen = (!useMediaQuery(theme.breakpoints.up('md')));
 
         if(size === 1){
 
             if(isSmallScreen === true) return "2.8rem";
+
+            if(isMediumScreen === true) return "3rem";
 
             return "3.5rem"; 
         }
@@ -37,12 +44,10 @@ const Title: FunctionComponent<TitleProps> = (props) => {
         fontSize: getFontSize(props.size)
     };
 
-    
     const useStyles = makeStyles({title});
     const classes = useStyles();
 
     return <Box component={`h${size}`} {...otherProps}  className={classes.title}  >{props.children}</Box>
-
 }
 
 export default Title;

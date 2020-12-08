@@ -20,9 +20,9 @@
     "difficulty": {
       "type": "enumeration",
       "enum": [
-        "facile",
-        "moyen",
-        "difficile"
+        "Facile",
+        "Moyen",
+        "Difficile"
       ]
     },
     "cover": {
