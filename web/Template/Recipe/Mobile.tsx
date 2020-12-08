@@ -116,7 +116,7 @@ const Mobile = ({recipe, renderUstensil}) : JSX.Element => {
         <Container >
 
             <Box height="280px">
-                <Box position="absolute" zIndex="modal" >
+                <Box position="absolute" zIndex="modal" width="100%" >
                     <Image 
                         width="100%"
                         height="280px"

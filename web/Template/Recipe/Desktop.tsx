@@ -23,19 +23,21 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
     
           <Container display="flex" justifyContent="space-between" height={280}>
     
-            <Box display="flex" flexDirection="column" justifyContent="flex-end" mb={2} ml={2}  >
-              <Title size={1} m={0} color="white">{recipe.title}</Title>
+            <Box display="flex" flexDirection="column" justifyContent="flex-end" mb={2} ml={2} width={isMediumScreen === true ? "50%": "65%"} >
+
+              <Title size={1} m={0} color="white" >{recipe.title}</Title>
               <Box mt={5} display="flex">
                 {valueExist(recipe, "difficulty") && 
                   <Info title="Difficulté" content={recipe.difficulty} mr={4} />
                 }
                 {valueExist(recipe, "prep_time") && valueExist(recipe, "cook_time") &&
-                <>
-                <Info title="Temps total" content={getTotalCookTime(recipe.prep_time, recipe.cook_time)} mr={4} />
-                <Info title="Temps de cuisson" content={getTime(recipe.cook_time)} mr={4} />
-                <Info title="Temps de préparation" content={getTime(recipe.prep_time)} mr={4} />
-                </>
+                  <>
+                    <Info title="Temps total" content={getTotalCookTime(recipe.prep_time, recipe.cook_time)} mr={4} />
+                    <Info title="Temps de cuisson" content={getTime(recipe.cook_time)} mr={4} />
+                    <Info title="Temps de préparation" content={getTime(recipe.prep_time)} mr={4} />
+                  </>
                 }
+
               </Box>
             </Box>
     
@@ -45,6 +47,7 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
         
         <Container display="flex">
     
+          {/* Left Box */}
           <Box mr={5} ml={2} width="100%">
             {valueExist(recipe, "description") && 
               <Box mb={2} >
@@ -75,31 +78,32 @@ const Desktop = ({recipe, renderUstensil}) : JSX.Element => {
             }
           </Box>
 
-          <Box width={isMediumScreen === true ? 300 : 380} mt={-30} mr={1} ml={1}>
-          <Image 
-            width={isMediumScreen === true ? "300px" : "380px"} 
-            height={isMediumScreen === true ? "300px" : "380px"}
-            alt={`${recipe.title} photo`}
-            img={recipe.cover}
-          />
-          {valueExist(recipe, "ingredient") && 
-          <Box bgcolor="grey.200" p={2} mt={1}>
-            <Box display="flex" justifyContent="space-between" alignItems="center">
-              <Title size={2} m={0}>Ingredients</Title>
-              {valueExist(recipe, 'person') && 
-              <span>{recipe.person} personnes</span>
-              }
+          {/* Right Box */}
+          <Box width={isMediumScreen === true ? 300 : 380} mt={-30} mr={1} ml={1} border="4px solid white" height="fit-content">
+            <Image 
+              width={isMediumScreen === true ? "300px" : "380px"} 
+              height={isMediumScreen === true ? "300px" : "380px"}
+              alt={`${recipe.title} photo`}
+              img={recipe.cover}
+            />
+            {valueExist(recipe, "ingredient") && 
+            <Box bgcolor="grey.200" p={2} mt={1}>
+              <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Title size={2} m={0}>Ingredients</Title>
+                {valueExist(recipe, 'person') && 
+                <span>{recipe.person} personnes</span>
+                }
+              </Box>
+              
+              <Box mt={3}>
+                {recipe.ingredient
+                .filter(item => item.ingredient !== null) // prevent from adding null value
+                .map((item) => {
+                  return <Ingredients amount={item.amount} item={item.ingredient} unit={item.unit} key={item.id} />
+                })}
+              </Box>
             </Box>
-            
-            <Box mt={3}>
-              {recipe.ingredient
-              .filter(item => item.ingredient !== null) // prevent from adding null value
-              .map((item) => {
-                return <Ingredients amount={item.amount} item={item.ingredient} unit={item.unit} key={item.id} />
-              })}
-            </Box>
-          </Box>
-          }
+            }
         </Box>
 
         </Container>
